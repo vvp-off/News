@@ -11,6 +11,10 @@
 		D16CD4712CC6C85900868FA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16CD4702CC6C85900868FA4 /* SceneDelegate.swift */; };
 		D16CD4732CC6C85900868FA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16CD4722CC6C85900868FA4 /* ViewController.swift */; };
 		D16CD4782CC6C85C00868FA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D16CD4772CC6C85C00868FA4 /* Assets.xcassets */; };
+		F4B0347E2CCC30610093E094 /* Inter-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F4B0347C2CCC30610093E094 /* Inter-Regular.otf */; };
+		F4B0347F2CCC30610093E094 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F4B0347A2CCC30610093E094 /* Inter-Bold.otf */; };
+		F4B034802CCC30610093E094 /* Inter-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = F4B0347B2CCC30610093E094 /* Inter-Medium.otf */; };
+		F4B034812CCC30610093E094 /* Inter-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F4B0347D2CCC30610093E094 /* Inter-SemiBold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +24,10 @@
 		D16CD4722CC6C85900868FA4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D16CD4772CC6C85C00868FA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D16CD47C2CC6C85C00868FA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4B0347A2CCC30610093E094 /* Inter-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.otf"; sourceTree = "<group>"; };
+		F4B0347B2CCC30610093E094 /* Inter-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.otf"; sourceTree = "<group>"; };
+		F4B0347C2CCC30610093E094 /* Inter-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.otf"; sourceTree = "<group>"; };
+		F4B0347D2CCC30610093E094 /* Inter-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +60,7 @@
 		D16CD46D2CC6C85900868FA4 /* WorldNewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				F4B034792CCC303A0093E094 /* Fonts */,
 				D16CD46E2CC6C85900868FA4 /* AppDelegate.swift */,
 				D16CD4702CC6C85900868FA4 /* SceneDelegate.swift */,
 				D16CD4722CC6C85900868FA4 /* ViewController.swift */,
@@ -59,6 +68,17 @@
 				D16CD47C2CC6C85C00868FA4 /* Info.plist */,
 			);
 			path = WorldNewsApp;
+			sourceTree = "<group>";
+		};
+		F4B034792CCC303A0093E094 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F4B0347A2CCC30610093E094 /* Inter-Bold.otf */,
+				F4B0347B2CCC30610093E094 /* Inter-Medium.otf */,
+				F4B0347C2CCC30610093E094 /* Inter-Regular.otf */,
+				F4B0347D2CCC30610093E094 /* Inter-SemiBold.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +139,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B0347E2CCC30610093E094 /* Inter-Regular.otf in Resources */,
+				F4B0347F2CCC30610093E094 /* Inter-Bold.otf in Resources */,
+				F4B034802CCC30610093E094 /* Inter-Medium.otf in Resources */,
+				F4B034812CCC30610093E094 /* Inter-SemiBold.otf in Resources */,
 				D16CD4782CC6C85C00868FA4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
