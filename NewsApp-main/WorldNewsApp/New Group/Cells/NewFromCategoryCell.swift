@@ -9,4 +9,5 @@ import UIKit
 
 class NewFromCategoryCell: UICollectionViewCell {
     static let identifier = "NewFromCategoryCell"
+    
 }
