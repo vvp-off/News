@@ -1,0 +1,129 @@
+/* 
+  Localizable.strings
+  radio-app-ios
+
+  Created by  Maksim Stogniy on 29.07.2024.
+  
+*/
+
+//MARK: - Example
+"LabelValue" = "English label";
+"ButtonValue" = "English button";
+"ButtonGetStarted" = "Get Started";
+"WelcomeTitleLabel" = "Let’s Get\nStarted";
+"WelcomeLabel" = "Enjoy the best radio stations\nfrom your home, don't miss\nout on anything";
+"Hello" = "Hello";
+"PopularTitle" = "Popular";
+"AllStations" = "All Stations";
+"SignIn" = "Sign in";
+"SignUp" = "Sign up";
+"Subheading" = "to start play";
+"NameLabel" = "Name";
+"EmailLabel" = "Email";
+"PasswordLabel" = "Password";
+"ForgotButton" = "Forgot password?";
+"YourName" = "Your name";
+"YourEmail" = "Your email";
+"YourPassword" = "Your password";
+"ConfirmPassword" = "Confirm password";
+"Connect" = "Or connect with";
+"OrSignUp" = "or Sign Up";
+"OrSignIn" = "or Sign In";
+"ForgotHeading" = "Forgot \nPassword";
+"SentButton" = "Sent";
+"ChangeButton" = "Change password";
+
+//MARK: - Detail
+"PlayingNow" = "Playing now";
+
+//MARK: - Favorites
+"FavoritesTitle" = "Favorites";
+"FavoritesEmpty" = "You haven't favorite station yet";
+
+
+//MARK: - AuthScreen
+"AuthScreenUDismissButtonText" = "Dismiss";
+"AuthScreenOkButtonText" = "Ok";
+"AuthScreenUserNameOrPasswordErrorTitle" = "Invalid email or password.";
+"AuthScreenUserNameOrPasswordErrorMessage" = "Please try again.";
+"AuthScreenUserNameErrorTitle" = "Invalid username";
+"AuthScreenUserNameErrorMessage" = "Username must contain at least 4 symbols. Please enter correct username.";
+"AuthScreenUserEmailErrorTitle" = "Invalid email";
+"AuthScreenUserEmailErrorMessage" = "Please enter correct email";
+"AuthScreenUserPasswordErrorTitle" = "Invalid password";
+"AuthScreenUserPasswordErrorMessage" = "Password must contain at least 6 symbols. Please enter correct password.";
+"AuthScreenUserPasswordRepeatErrorTitle" = "Password mismatch";
+"AuthScreenUserPasswordRepeatErrorMessage" = "Passwords do not match. Please try again.";
+"AuthSceenRegistrationErrorTitle" = "Oh, it's an error";
+"AuthSceenRegistrationUserError" = "User's registration error";
+"AuthSceenRegistrationUnexpectedError" = "Unexpected error";
+"AuthSceenResetPasswordErrorTitle" = "Oh, it's an error";
+"AuthSceenPasswordResetSuccessTitle" = "Password reset";
+"AuthSceenPasswordResetSuccessMessage" = "The password reset email has been successfully sent. Please check your email.";
+
+//MARK: - Popular
+"votes" = "votes";
+
+// MARK: - Settings
+"Settings" = "Settings";
+
+// main
+"HeaderUserName" = "Your name";
+"HeaderUserEmail" = "Your email";
+"Log Out" = "Log Out";
+
+// policy
+"Introduction" = "Welcome to RadioApp. Your privacy is important to us. This Privacy Policy explains how we collect, use, protect, and share information and data when you use RadioApp. This policy applies to all users of our app and services.";
+
+"MainRules" = "We collect information to provide better services to all of our users. The types of information we collect include:
+
+    Personal Information: This is information that you provide to us which personally identifies you, such as your name, email address, and billing information.
+    Usage Information: We collect information about your interactions with our app, such as the pages you visit, the content you view, and the dates and times of your visits.
+    Device Information: We may collect specific information about your device when you access our app, including model, operating system, unique device identifiers, and mobile network information.";
+
+// edit profile 
+"UserName" = "Full name";
+"UserEmail" = "Email";
+"UserPassword" = "Password";
+"Save Changes" = "Save Changes";
+"ChangeEmailError" = "* Email already exists";
+
+// notifications
+"NotificationsTitle" = "Notification Settings";
+"ShowNotifications" = "Show notifications";
+"SendNotificationsLabel" = "Send notifications at";
+
+// Settings
+"General" = "General";
+"Notification" = "Notification";
+"Language" = "Language";
+"More" = "More";
+"LegalAndPolicies" = "Legal and Policies";
+"AboutUs" = "About Us";
+
+//MARK: - Browse
+"browse_by_tags" = "Browse by\ntags";
+"browse_by_language" = "Browse by\nlanguage";
+"browse_by_country" = "Browse by\ncountry";
+
+//MARK: - Audio Pleer
+"AudioPleerErrorTitle" = "Error";
+"AudioPleerErrorMessage" = "This station is not broadcasting anything at the moment";
+"AboutText" = "🎵 Welcome to RadioApp — your personal radio studio! 🌟
+
+We’ve curated the best collection of radio stations from around the globe so you can enjoy music anytime, anywhere. Our app is designed to keep your day full of rhythm, fun, and great vibes!
+
+If you have any questions or suggestions, we’re all ears! Drop us a line, and we’ll do our best to make your radio experience even better!
+
+The RadioApp Team";
+
+//MARK: Languages
+"AvailableLanguages" = "Available Languages";
+"LangChangeMessage" = "To change the language, close the app and re-launch it.";
+"LangAlerTitle" = "Warning!";
+
+"Changes to the Service and/or Terms" = "Changes to the Service and/or Terms";
+"Terms" = "Terms";
+"SearchRadioStation" = "Search radio station";
+"SearchTitle" = "Seach";
+"SearchEmpty" = "Nothing was found 😢";
