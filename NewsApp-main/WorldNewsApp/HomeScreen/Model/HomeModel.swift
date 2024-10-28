@@ -28,6 +28,7 @@ struct New: Hashable, Identifiable  {
     let category: String
     let imageID: Int
     let rating: Double
+    let date: Date
 }
 
 struct HomeViewModel {

@@ -33,7 +33,7 @@ class CategorieCell: UICollectionViewCell {
         contentView.addSubview(titleLabel)
         contentView.backgroundColor = UIColor(red: 0.95, green: 0.96, blue: 0.97, alpha: 1)
         titleLabel.text = "Category"
-        titleLabel.font = UIFont(name: "Inter-Regular", size: 12)
+        titleLabel.font = .Inter.medium
         titleLabel.textColor = UIColor(red: 0.49, green: 0.51, blue: 0.63, alpha: 1)
         
         titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true

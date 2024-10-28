@@ -14,7 +14,7 @@ class NewFromCategoryCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "POLITICS"
         label.font = UIFont(name: "Inter-Regular", size: 12)
-        label.textColor = UIColor(red: 0.95, green: 0.96, blue: 0.97, alpha: 1)
+        label.textColor = AppColors.grayLighter
         return label
     }()
     
