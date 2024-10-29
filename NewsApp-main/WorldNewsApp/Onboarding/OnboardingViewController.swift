@@ -15,13 +15,16 @@ final class OnboardingViewController: UIPageViewController {
     private let pageControl = UIPageControl()
     private let initialPage = 0
     
+    let page1 = OnboardingPage1VC()
+    let page2 = OnboardingPage2VC()
+    let page3 = OnboardingPage3VC()
+    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setDelegate()
         setOnboardingVC()
-        
         setPageControl()
     }
     
@@ -34,19 +37,19 @@ final class OnboardingViewController: UIPageViewController {
     // MARK: - Methods
     
     private func setOnboardingVC() {
-        let page1 = OnboardingPage1VC()
-        let page2 = OnboardingPage2VC()
-        let page3 = OnboardingPage3VC()
-        
+        view.backgroundColor = .white
         [page1, page2, page3].forEach {onboardingPages.append($0)}
         view.addSubview(pageControl)
         
         setViewControllers([onboardingPages[initialPage]], direction: .forward, animated: true)
+        setConstraints()
     }
     
     private func setDelegate() {
         dataSource = self
         delegate = self
+        page1.delegate = self
+        page2.delegate = self
     }
     
     private func setPageControl() {
@@ -60,12 +63,6 @@ final class OnboardingViewController: UIPageViewController {
         if #available(iOS 14.0, *) {
             pageControl.preferredIndicatorImage = UIImage(systemName: "oval.fill")
         }
-        
-        pageControl.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            pageControl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
     }
 }
 
@@ -101,5 +98,31 @@ extension OnboardingViewController: UIPageViewControllerDelegate {
         guard let currentIndex = onboardingPages.firstIndex(of: viewControllers[0]) else { return }
         
         pageControl.currentPage = currentIndex
+    }
+}
+
+// MARK: - Extension UIPageViewController
+
+extension OnboardingViewController: OnboardingDelegate {
+    func goToNextPage() {
+        guard let currentPage = viewControllers?[0] else { return }
+        guard let nextVC = dataSource?.pageViewController(self, viewControllerAfter: currentPage) else { return }
+        setViewControllers([nextVC], direction: .forward, animated: true)
+        
+        if let currentIndex = onboardingPages.firstIndex(of: currentPage) {
+            pageControl.currentPage = currentIndex + 1
+        }
+    }
+}
+
+// MARK: - Extension Constraints
+
+extension OnboardingViewController {
+    func setConstraints() {
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            pageControl.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
     }
 }
