@@ -10,6 +10,14 @@ import UIKit
 // MARK: - Ячейка профиля
 class UserInfoCell: UITableViewCell {
     // UI Elements
+    private lazy var titleLabel: UILabel  = {
+        let element = UILabel()
+        element.text = "Profile"
+        element.textAlignment = .left
+        element.font = UIFont.Inter.semibold.size(of: 24)
+        element.translatesAutoresizingMaskIntoConstraints = false
+        return element
+    }()
     private let avatarImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 32
@@ -48,24 +56,28 @@ class UserInfoCell: UITableViewCell {
         contentView.addSubview(avatarImageView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(emailLabel)
+        contentView.addSubview(titleLabel)
         
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         emailLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Setup Constraints
+    
         NSLayoutConstraint.activate([
-            avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            
+            avatarImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
             avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             avatarImageView.widthAnchor.constraint(equalToConstant: 64),
             avatarImageView.heightAnchor.constraint(equalToConstant: 64),
             
             nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
-            nameLabel.topAnchor.constraint(equalTo: avatarImageView.topAnchor, constant: 8),
+            nameLabel.topAnchor.constraint(equalTo: avatarImageView.topAnchor),
             
             emailLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             emailLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
-            emailLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -16)
+            emailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
         ])
     }
     
@@ -191,7 +203,7 @@ class LogoutCell: UITableViewCell {
             containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
             containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30),
             containerView.heightAnchor.constraint(equalToConstant: 56),
             
             titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),

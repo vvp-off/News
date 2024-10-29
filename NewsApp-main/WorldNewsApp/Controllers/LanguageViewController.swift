@@ -38,7 +38,6 @@ class LanguageViewController: UIViewController {
     
     //MARK: - Private Methods
     private func setupUI() {
-        title = "Language"
         view.backgroundColor = .white
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -51,7 +50,7 @@ class LanguageViewController: UIViewController {
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 124),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)

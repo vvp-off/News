@@ -22,6 +22,7 @@ class TermsConditionsViewController: UIViewController {
         let scroll = UIScrollView()
         scroll.alwaysBounceVertical = true
         scroll.showsVerticalScrollIndicator = true
+        scroll.showsHorizontalScrollIndicator = false
         scroll.backgroundColor = .white
         scroll.translatesAutoresizingMaskIntoConstraints = false
         return scroll
@@ -83,7 +84,7 @@ class TermsConditionsViewController: UIViewController {
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
             // Ограничения для textLabel
-            textLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 120),
+            textLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
             textLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             textLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -19),
             textLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -21),

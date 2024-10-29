@@ -15,18 +15,30 @@ class UserViewController: UITableViewController {
         ["Terms & Conditions"],        // Секция 2 - Secondary Settings
         ["Sign Out"]                   // Секция 3 - Logout
     ]
+    
+    
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         setupNavigation()
+       
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+
     //MARK: - Private Methods
     private func setupTableView() {
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
-        tableView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 96, right: 0)
         
         tableView.register(UserInfoCell.self, forCellReuseIdentifier: "UserInfoCell")
         tableView.register(SettingsCell.self, forCellReuseIdentifier: "SettingsCell")
@@ -34,9 +46,9 @@ class UserViewController: UITableViewController {
     }
     
     private func setupNavigation() {
-        title = "Profile"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
+  
 }
 
 // MARK: - UITableViewDataSource
@@ -88,21 +100,44 @@ extension UserViewController {
 
     // MARK: - UITableViewDelegate
 
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let row = rows[indexPath.section][indexPath.row]
+//        if row == "Language" {
+//            let languageVC = LanguageViewController()
+//            languageVC.hidesBottomBarWhenPushed = true
+//            navigationController?.pushViewController(languageVC, animated: true)
+//        }
+//        tableView.deselectRow(at: indexPath, animated: true)
+//    }
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = rows[indexPath.section][indexPath.row]
-        if row == "Language" {
+        
+        switch row {
+        case "Language":
             let languageVC = LanguageViewController()
+            languageVC.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(languageVC, animated: true)
+            
+        case "Terms & Conditions":
+            let termsVC = TermsConditionsViewController()
+            termsVC.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(termsVC, animated: true)
+            
+        default:
+            break
         }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
+        case 0:
+            return 0
         case 1:
-            return 32
+            return 15
         case 2:
-            return 300
+            return 250
         case 3:
             return 0
         default:
