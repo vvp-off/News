@@ -99,17 +99,6 @@ extension UserViewController {
     }
 
     // MARK: - UITableViewDelegate
-
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let row = rows[indexPath.section][indexPath.row]
-//        if row == "Language" {
-//            let languageVC = LanguageViewController()
-//            languageVC.hidesBottomBarWhenPushed = true
-//            navigationController?.pushViewController(languageVC, animated: true)
-//        }
-//        tableView.deselectRow(at: indexPath, animated: true)
-//    }
-
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = rows[indexPath.section][indexPath.row]
         
@@ -123,6 +112,12 @@ extension UserViewController {
             let termsVC = TermsConditionsViewController()
             termsVC.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(termsVC, animated: true)
+            
+        case "HomeViewController":
+            print("Sign Out tapped")
+            if let tabBarVC = navigationController?.tabBarController as? TabBarController {
+                tabBarVC.selectedIndex = 0
+            }
             
         default:
             break
