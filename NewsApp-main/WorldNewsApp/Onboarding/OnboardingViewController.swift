@@ -25,7 +25,7 @@ final class OnboardingViewController: UIPageViewController {
         super.viewDidLoad()
         fetchNews(apiService: .technology)
         setDelegate()
-        //        setOnboardingVC()
+        setOnboardingPages()
         setPageControl()
     }
     
@@ -39,11 +39,13 @@ final class OnboardingViewController: UIPageViewController {
     
     private func setOnboardingVC() {
         view.backgroundColor = .white
-        [page1, page2, page3].forEach {onboardingPages.append($0)}
         view.addSubview(pageControl)
-        
         setViewControllers([onboardingPages[initialPage]], direction: .forward, animated: true)
         setConstraints()
+    }
+    
+    private func setOnboardingPages() {
+        [page1, page2, page3].forEach {onboardingPages.append($0)}
     }
     
     func fetchNews(apiService: ApiService) {
