@@ -16,7 +16,7 @@ final class OnboardingPage1VC: UIViewController {
     // MARK: - Properties
     
     weak var delegate: OnboardingDelegate?
-    
+    var articles: [News] = []
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "tempImage")
@@ -76,8 +76,8 @@ final class OnboardingPage1VC: UIViewController {
             nextButton
         ].forEach { view.addSubview($0) }
         
-        titleLabel.text = "Some text obout pictures"
-        subtitleLabel.text = "Australia's most trusted source of local, national and world news. Comprehensive, independent, in-depth analysis, the latest business, sport, weather and more."
+        titleLabel.text = articles[0].title
+        subtitleLabel.text = articles[0].description
         nextButton.setTitle("Next", for: .normal)
         
         nextButton.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
@@ -96,6 +96,7 @@ extension OnboardingPage1VC {
             
             titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 60),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
             
             subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
             subtitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),

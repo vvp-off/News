@@ -14,17 +14,18 @@ final class OnboardingViewController: UIPageViewController {
     private var onboardingPages = [UIViewController]()
     private let pageControl = UIPageControl()
     private let initialPage = 0
-    
-    let page1 = OnboardingPage1VC()
-    let page2 = OnboardingPage2VC()
-    let page3 = OnboardingPage3VC()
+    private var articles: [News] = []
+    private let page1 = OnboardingPage1VC()
+    private let page2 = OnboardingPage2VC()
+    private let page3 = OnboardingPage3VC()
     
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchNews(apiService: .technology)
         setDelegate()
-        setOnboardingVC()
+        //        setOnboardingVC()
         setPageControl()
     }
     
@@ -43,6 +44,34 @@ final class OnboardingViewController: UIPageViewController {
         
         setViewControllers([onboardingPages[initialPage]], direction: .forward, animated: true)
         setConstraints()
+    }
+    
+    func fetchNews(apiService: ApiService) {
+        let httpClient = HTTPClient(with: .default)
+        
+        Task {
+            do {
+                let articles = try await httpClient.requestData(for: apiService)
+                self.articles = articles.map {News(from: $0) }
+                
+                if self.articles.count > 0 {
+                    self.page1.articles = self.articles
+                    self.page2.articles = self.articles
+                    self.page3.articles = self.articles
+                }
+                // Здесь обновляем UI с нашими данными.
+                DispatchQueue.main.async {
+                    self.setOnboardingVC()
+                }
+                //                удалить потом просто проверка
+                for sourse in articles {
+                    print(sourse.urlToImage ?? "")
+                }
+            }
+            catch let error as RequestError {
+                print("Произошла ошибка: \(error.errorDescription ?? "Неизвестная ошибка")")
+            }
+        }
     }
     
     private func setDelegate() {
