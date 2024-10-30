@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        window?.rootViewController = ViewController()
 //        window?.makeKeyAndVisible()
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = OnboardingViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+        window?.rootViewController = TabBarController()
         window?.makeKeyAndVisible()
     }
 }
