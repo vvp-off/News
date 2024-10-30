@@ -13,7 +13,7 @@ class NewFromCategoryCell: UICollectionViewCell {
     lazy var categoryNameLabel: UILabel = {
         let label = UILabel()
         label.text = "POLITICS"
-        label.font = UIFont(name: "Inter-Regular", size: 12)
+        label.font = .Inter.bold.size(of: 14)
         label.textColor = AppColors.grayLighter
         return label
     }()
@@ -21,7 +21,7 @@ class NewFromCategoryCell: UICollectionViewCell {
     lazy var newNameLabel: UILabel = {
         let label = UILabel()
         label.text = "The latest situation in the presidential election"
-        label.font = UIFont(name: "Inter-Bold", size: 16)
+        label.font = .Inter.bold.size(of: 16)
         label.textColor = .white
         label.numberOfLines = 0
         return label

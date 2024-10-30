@@ -13,16 +13,16 @@ class RecNewCell: UICollectionViewCell {
     lazy var categoryNameLabel: UILabel = {
         let label = UILabel()
         label.text = "POLITICS"
-        label.font = UIFont(name: "Inter-Regular", size: 12)
-        label.textColor = UIColor(red: 0.49, green: 0.51, blue: 0.63, alpha: 1)
+        label.font = .Inter.regular.size(of: 12)
+        label.textColor = AppColors.grayPrimary
         return label
     }()
     
     lazy var newNameLabel: UILabel = {
         let label = UILabel()
         label.text = "The latest situation in the presidential election"
-        label.font = UIFont(name: "Inter-Medium", size: 16)
-        label.textColor = UIColor(red: 0.2, green: 0.21, blue: 0.28, alpha: 1)
+        label.font = .Inter.medium.size(of: 16)
+        label.textColor = AppColors.blackPrimary
         label.numberOfLines = 0
         
         return label

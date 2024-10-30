@@ -31,10 +31,10 @@ class CategorieCell: UICollectionViewCell {
     
     private func setupLabel() {
         contentView.addSubview(titleLabel)
-        contentView.backgroundColor = UIColor(red: 0.95, green: 0.96, blue: 0.97, alpha: 1)
+        contentView.backgroundColor = AppColors.grayLighter
         titleLabel.text = "Category"
-        titleLabel.font = .Inter.medium
-        titleLabel.textColor = UIColor(red: 0.49, green: 0.51, blue: 0.63, alpha: 1)
+        titleLabel.font = .Inter.medium.size(of: 12)
+        titleLabel.textColor = AppColors.grayPrimary
         
         titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true

@@ -10,6 +10,7 @@ import Foundation
 // MARK: - Sections
 
 enum NewsSection: Int, Hashable, CaseIterable {
+    case search
     case categories
     case newsFromCategory
     case recommendedNews

@@ -53,7 +53,7 @@ class TabBarController: UITabBarController {
     
     private func setupTabs() {
         let viewControllers = [
-            createViewController(HomeViewController(), imageName: "home"),
+            createViewController(UINavigationController(rootViewController: HomeViewController()), imageName: "home"),
             createViewController(AppsViewController(), imageName: "apps"),
             createViewController(BookmarkViewController(), imageName: "bookmark"),
             createViewController(UserViewController(), imageName: "user")

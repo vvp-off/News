@@ -10,7 +10,9 @@ import UIKit.UICollectionViewLayout
 extension UICollectionViewLayout {
     static func newsLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, _ in
-            switch NewsSection(rawValue: sectionIndex) {
+            switch NewsSection(rawValue: sectionIndex){
+            case .search:
+                return createSearchSection()
             case .categories:
                 return createCategorySection()
             case .newsFromCategory:
@@ -22,6 +24,24 @@ extension UICollectionViewLayout {
             }
         }
         return layout
+    }
+    
+    private static func createSearchSection() -> NSCollectionLayoutSection {
+        let estimatedHeight: CGFloat = 100
+//        let estimatedWidth: CGFloat = 86
+        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                          heightDimension: .estimated(estimatedHeight))
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: size,
+                                                       subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 8
+        section.orthogonalScrollingBehavior = .continuous
+        section.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12)
+        
+        //        let header = createHeader()
+        //        section.boundarySupplementaryItems = [header]
+        return section
     }
     
     private static func createCategorySection() -> NSCollectionLayoutSection {
