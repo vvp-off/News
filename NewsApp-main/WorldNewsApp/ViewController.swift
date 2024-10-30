@@ -54,7 +54,7 @@ class ViewController: UIViewController {
                 
                 //                просто тест вывода информации можно удалить
                 for sourse in articles {
-                    print(sourse.title ?? "")
+                    print(sourse.urlToImage ?? "")
                 }
             }
             catch let error as RequestError {
