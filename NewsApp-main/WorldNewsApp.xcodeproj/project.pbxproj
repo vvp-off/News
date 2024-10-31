@@ -26,6 +26,10 @@
 		D16CD4712CC6C85900868FA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16CD4702CC6C85900868FA4 /* SceneDelegate.swift */; };
 		D16CD4732CC6C85900868FA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16CD4722CC6C85900868FA4 /* ViewController.swift */; };
 		D16CD4782CC6C85C00868FA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D16CD4772CC6C85C00868FA4 /* Assets.xcassets */; };
+		E75929982CCDFDAD008C59ED /* TermsConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75929972CCDFDAD008C59ED /* TermsConditionsViewController.swift */; };
+		E759299A2CCDFE17008C59ED /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75929992CCDFE17008C59ED /* LanguageViewController.swift */; };
+		E759299C2CCDFE71008C59ED /* LanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759299B2CCDFE71008C59ED /* LanguageCell.swift */; };
+		E759299E2CCE0F5A008C59ED /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759299D2CCE0F5A008C59ED /* UserCell.swift */; };
 		F44BE0802CD27782002FAB03 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BE07F2CD27782002FAB03 /* Result.swift */; };
 		F4A918672CCD0F2600F3EF54 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A918662CCD0F2600F3EF54 /* UIColor+Extension.swift */; };
 		F4A918692CCD11E800F3EF54 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A918682CCD11E800F3EF54 /* UIFont+Extension.swift */; };
@@ -64,6 +68,10 @@
 		D16CD4722CC6C85900868FA4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D16CD4772CC6C85C00868FA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D16CD47C2CC6C85C00868FA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E75929972CCDFDAD008C59ED /* TermsConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsConditionsViewController.swift; sourceTree = "<group>"; };
+		E75929992CCDFE17008C59ED /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
+		E759299B2CCDFE71008C59ED /* LanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageCell.swift; sourceTree = "<group>"; };
+		E759299D2CCE0F5A008C59ED /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		F44BE07F2CD27782002FAB03 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		F4A918662CCD0F2600F3EF54 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		F4A918682CCD11E800F3EF54 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
@@ -197,6 +205,10 @@
 				F4A9186E2CCD236600F3EF54 /* AppsViewController.swift */,
 				F4A918702CCD236600F3EF54 /* HomeViewController.swift */,
 				F4A918712CCD236600F3EF54 /* UserViewController.swift */,
+				E759299D2CCE0F5A008C59ED /* UserCell.swift */,
+				E75929972CCDFDAD008C59ED /* TermsConditionsViewController.swift */,
+				E75929992CCDFE17008C59ED /* LanguageViewController.swift */,
+				E759299B2CCDFE71008C59ED /* LanguageCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -316,13 +328,17 @@
 				F44BE0802CD27782002FAB03 /* Result.swift in Sources */,
 				F4A918692CCD11E800F3EF54 /* UIFont+Extension.swift in Sources */,
 				D16CD4732CC6C85900868FA4 /* ViewController.swift in Sources */,
+				E75929982CCDFDAD008C59ED /* TermsConditionsViewController.swift in Sources */,
 				F4A918672CCD0F2600F3EF54 /* UIColor+Extension.swift in Sources */,
 				F4A9186B2CCD1CC000F3EF54 /* AppColors.swift in Sources */,
+				E759299C2CCDFE71008C59ED /* LanguageCell.swift in Sources */,
 				F4A9186D2CCD232C00F3EF54 /* TabBarController.swift in Sources */,
 				D16CD46F2CC6C85900868FA4 /* AppDelegate.swift in Sources */,
-				D106B51C2CD31D5B00D28526 /* BookmarkViewController.swift in Sources */,
+				E759299E2CCE0F5A008C59ED /* UserCell.swift in Sources */,
 				F4A918732CCD236600F3EF54 /* AppsViewController.swift in Sources */,
 				F4A918742CCD236600F3EF54 /* UserViewController.swift in Sources */,
+				D106B51C2CD31D5B00D28526 /* BookmarkViewController.swift in Sources */,
+				E759299A2CCDFE17008C59ED /* LanguageViewController.swift in Sources */,
 				F4A918762CCD236600F3EF54 /* HomeViewController.swift in Sources */,
 				11242F562CCC324000178851 /* ImageService.swift in Sources */,
 				11A9ABD62CCFE948006660DA /* OnboardingPage1VC.swift in Sources */,

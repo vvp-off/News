@@ -56,9 +56,17 @@ class TabBarController: UITabBarController {
             createViewController(HomeViewController(), imageName: "home"),
             createViewController(AppsViewController(), imageName: "apps"),
             createViewController(BookmarkViewController(), imageName: "bookmark"),
-            createViewController(UserViewController(), imageName: "user")
+//            createViewController(UserViewController(), imageName: "user")
+            createNavigationViewController(UserViewController(), imageName: "user")
+            
+            
         ]
         setViewControllers(viewControllers, animated: false)
+    }
+    private func createNavigationViewController(_ viewController: UIViewController, imageName: String) -> UIViewController {
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.tabBarItem.image = UIImage(named: imageName)
+        return navigationController
     }
     
     private func createViewController(_ viewController: UIViewController, imageName: String) -> UIViewController {
