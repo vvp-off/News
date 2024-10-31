@@ -12,6 +12,7 @@ final class OnboardingPage3VC: UIViewController {
     // MARK: - Properties
     
     var articles: [News] = []
+    let transitionManager = TransitionManager()
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -58,10 +59,30 @@ final class OnboardingPage3VC: UIViewController {
     
     // MARK: - Actions
     
-    @objc private func nextButtonAction(_ sender: UIButton) {
-        let startVC = ViewController()
-        startVC.modalPresentationStyle = .popover
-        present(startVC, animated: true)
+    @objc private func startedButtonAction(_ sender: UIButton) {
+//        let startVC = ViewController()
+//        startVC.modalPresentationStyle = .popover
+//        present(startVC, animated: true)
+        
+//        changeInputScreen()
+        
+        presentingController()
+        
+        UserDefaultsService.shared.isOnboarding = true
+    }
+    
+//    private func changeInputScreen() {
+//        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let sceneDelegate = windowScene.delegate as? SceneDelegate {
+//            let nextVC = ViewController()
+//            sceneDelegate.window?.rootViewController = nextVC
+//            }
+//    }
+    
+    private func presentingController() {
+        let nextVC = ViewController()
+        nextVC.modalPresentationStyle = .custom
+        nextVC.transitioningDelegate = self
+        present(nextVC, animated: true)
     }
     
     // MARK: - Methods
@@ -77,15 +98,21 @@ final class OnboardingPage3VC: UIViewController {
         titleLabel.text = articles[2].title
         subtitleLabel.text = articles[2].description
         nextButton.setTitle("Get Started", for: .normal)
-        
-        nextButton.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
+        nextButton.addTarget(self, action: #selector(startedButtonAction), for: .touchUpInside)
+    }
+}
+
+// MARK: - Extensions UIViewControllerTransitioningDelegate
+
+extension OnboardingPage3VC: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return transitionManager
     }
 }
 
 // MARK: - Extensions Constraints
 
 extension OnboardingPage3VC {
-    
     func setConstraints() {
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
@@ -106,5 +133,16 @@ extension OnboardingPage3VC {
             nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             nextButton.heightAnchor.constraint(equalToConstant: 56)
         ])
+    }
+}
+
+final class UserDefaultsService {
+    static let shared = UserDefaultsService()
+    
+    private init(){}
+    
+    var isOnboarding: Bool {
+        get { UserDefaults.standard.bool(forKey: "isOnboarding") }
+        set { UserDefaults.standard.set(newValue, forKey: "isOnboarding")}
     }
 }

@@ -23,10 +23,9 @@ final class OnboardingViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        chooseStartScreen()
         fetchNews(apiService: .technology)
-        setDelegate()
-        setOnboardingPages()
-        setPageControl()
     }
     
     // MARK: - Actions
@@ -37,8 +36,21 @@ final class OnboardingViewController: UIPageViewController {
     
     // MARK: - Methods
     
+    private func chooseStartScreen() {
+        if UserDefaultsService.shared.isOnboarding {
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let sceneDelegate = windowScene.delegate as? SceneDelegate {
+                let nextVC = ViewController()
+                sceneDelegate.window?.rootViewController = nextVC
+            }
+        } else {
+            setDelegate()
+            setOnboardingPages()
+            setPageControl()
+        }
+    }
+    
     private func setOnboardingVC() {
-        view.backgroundColor = .white
         view.addSubview(pageControl)
         setViewControllers([onboardingPages[initialPage]], direction: .forward, animated: true)
         setConstraints()
@@ -86,9 +98,9 @@ final class OnboardingViewController: UIPageViewController {
     private func setPageControl() {
         pageControl.currentPageIndicatorTintColor = .systemGray
         pageControl.pageIndicatorTintColor = .systemBlue
+        pageControl.transform = CGAffineTransform(scaleX: 1.5, y: 0.8)
         pageControl.numberOfPages = onboardingPages.count
         pageControl.currentPage = initialPage
-        
         pageControl.addTarget(self, action: #selector(pageControlAction), for: .touchUpInside)
         
         if #available(iOS 14.0, *) {
