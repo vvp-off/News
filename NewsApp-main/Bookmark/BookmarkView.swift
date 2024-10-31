@@ -18,7 +18,7 @@ class BookmarkView: UIView {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.numberOfLines = 0
         title.textAlignment = .left
-        title.tintColor = AppColors.blackDark
+        title.textColor = AppColors.blackDark
         title.font = UIFont.Inter.semibold.size(of: 26)
         title.text = "Bookmarks"
         return title
@@ -29,7 +29,7 @@ class BookmarkView: UIView {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.numberOfLines = 2
         title.textAlignment = .left
-        title.tintColor = AppColors.grayLighter
+        title.textColor = AppColors.grayPrimary
         title.font = UIFont.Inter.regular.size(of: 18)
         title.text = "Saved articles to the library"
         return title

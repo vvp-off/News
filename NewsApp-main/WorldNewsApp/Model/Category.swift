@@ -9,13 +9,13 @@ import Foundation
 
 struct Category: Codable {
     enum Name: String, Codable {
-            case business
-            case entertainment
-            case general
-            case health
-            case science
-            case sports
-            case technology
+            case business = "💼  Business"
+            case entertainment = "🎮  Entertainment"
+            case general = "🌎  General"
+            case health = "🦠  Health"
+            case science = "🔭  Science"
+            case sports = "⚽️  Sports"
+            case technology = "🖥  Technology"
     }
 
     let name: Name

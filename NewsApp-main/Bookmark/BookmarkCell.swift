@@ -14,7 +14,7 @@ class BookmarkCell: UICollectionViewCell {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.textAlignment = .left
-        title.tintColor = AppColors.grayLighter
+        title.textColor = AppColors.grayPrimary
         title.font = UIFont.Inter.regular.size(of: 16)
         return title
     }()
