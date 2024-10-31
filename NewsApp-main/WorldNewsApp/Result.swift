@@ -151,10 +151,9 @@ class ResultViewController: UIViewController {
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
             textLabel.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            textLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
-            textLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -19),
+            textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -19),
             textLabel.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            textLabel.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
             backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 28),
             backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
