@@ -90,9 +90,9 @@ extension BookmarkViewController: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let article = articlesArray[indexPath.row]
-        //articleViewController = ArticleViewController(with: article)
-        //articleViewController.hidesBottomBarWhenPushed = true
-        //navigationController?.pushViewController(articleViewController, animated: true)
+//        articleViewController = ArticleViewController(with: article)
+//        articleViewController.hidesBottomBarWhenPushed = true
+//        navigationController?.pushViewController(articleViewController, animated: true)
     }
 }
 
