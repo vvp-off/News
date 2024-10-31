@@ -17,6 +17,8 @@
 		11A9ABD62CCFE948006660DA /* OnboardingPage1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A9ABD52CCFE948006660DA /* OnboardingPage1VC.swift */; };
 		11A9ABD82CCFE957006660DA /* OnboardingPage2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A9ABD72CCFE957006660DA /* OnboardingPage2VC.swift */; };
 		11A9ABDA2CCFE963006660DA /* OnboardingPage3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A9ABD92CCFE963006660DA /* OnboardingPage3VC.swift */; };
+		11F2ABC92CD3652300FFCAE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11F2ABC82CD3652300FFCAE5 /* LaunchScreen.storyboard */; };
+		11F2ABCB2CD3938500FFCAE5 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F2ABCA2CD3938500FFCAE5 /* TransitionManager.swift */; };
 		D16CD46F2CC6C85900868FA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16CD46E2CC6C85900868FA4 /* AppDelegate.swift */; };
 		D16CD4712CC6C85900868FA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16CD4702CC6C85900868FA4 /* SceneDelegate.swift */; };
 		D16CD4732CC6C85900868FA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16CD4722CC6C85900868FA4 /* ViewController.swift */; };
@@ -34,6 +36,8 @@
 		11A9ABD52CCFE948006660DA /* OnboardingPage1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage1VC.swift; sourceTree = "<group>"; };
 		11A9ABD72CCFE957006660DA /* OnboardingPage2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage2VC.swift; sourceTree = "<group>"; };
 		11A9ABD92CCFE963006660DA /* OnboardingPage3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage3VC.swift; sourceTree = "<group>"; };
+		11F2ABC82CD3652300FFCAE5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		11F2ABCA2CD3938500FFCAE5 /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		D16CD46B2CC6C85900868FA4 /* WorldNewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldNewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16CD46E2CC6C85900868FA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D16CD4702CC6C85900868FA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,9 +87,18 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		11F2ABCC2CD39EBC00FFCAE5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				11F2ABCA2CD3938500FFCAE5 /* TransitionManager.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		D16CD4622CC6C85900868FA4 = {
 			isa = PBXGroup;
 			children = (
+				11F2ABC82CD3652300FFCAE5 /* LaunchScreen.storyboard */,
 				D16CD46D2CC6C85900868FA4 /* WorldNewsApp */,
 				D16CD46C2CC6C85900868FA4 /* Products */,
 			);
@@ -111,6 +124,7 @@
 				11A9ABD42CCFA1EC006660DA /* Onboarding */,
 				11242F4D2CCC30AE00178851 /* Model */,
 				11242F552CCC324000178851 /* ImageService.swift */,
+				11F2ABCC2CD39EBC00FFCAE5 /* Extensions */,
 			);
 			path = WorldNewsApp;
 			sourceTree = "<group>";
@@ -173,6 +187,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11F2ABC92CD3652300FFCAE5 /* LaunchScreen.storyboard in Resources */,
 				D16CD4782CC6C85C00868FA4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,6 +201,7 @@
 			files = (
 				D16CD4732CC6C85900868FA4 /* ViewController.swift in Sources */,
 				D16CD46F2CC6C85900868FA4 /* AppDelegate.swift in Sources */,
+				11F2ABCB2CD3938500FFCAE5 /* TransitionManager.swift in Sources */,
 				11242F562CCC324000178851 /* ImageService.swift in Sources */,
 				11A9ABD62CCFE948006660DA /* OnboardingPage1VC.swift in Sources */,
 				11A9ABDA2CCFE963006660DA /* OnboardingPage3VC.swift in Sources */,
