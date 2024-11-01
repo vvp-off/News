@@ -22,6 +22,9 @@
 		D106B5172CD31C0D00D28526 /* BookmarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D106B5162CD31C0D00D28526 /* BookmarkCell.swift */; };
 		D106B51A2CD31D0F00D28526 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D106B5192CD31D0F00D28526 /* BookmarkView.swift */; };
 		D106B51C2CD31D5B00D28526 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D106B51B2CD31D5B00D28526 /* BookmarkViewController.swift */; };
+		D147AF5A2CD4441400963D4B /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D147AF592CD4441400963D4B /* CategoryCell.swift */; };
+		D147AF5D2CD4453100963D4B /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D147AF5C2CD4453100963D4B /* CategoriesView.swift */; };
+		D147AF5F2CD4456800963D4B /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D147AF5E2CD4456800963D4B /* CategoriesViewController.swift */; };
 		D16CD46F2CC6C85900868FA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16CD46E2CC6C85900868FA4 /* AppDelegate.swift */; };
 		D16CD4712CC6C85900868FA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16CD4702CC6C85900868FA4 /* SceneDelegate.swift */; };
 		D16CD4732CC6C85900868FA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16CD4722CC6C85900868FA4 /* ViewController.swift */; };
@@ -62,6 +65,9 @@
 		D106B5162CD31C0D00D28526 /* BookmarkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCell.swift; sourceTree = "<group>"; };
 		D106B5192CD31D0F00D28526 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
 		D106B51B2CD31D5B00D28526 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
+		D147AF592CD4441400963D4B /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		D147AF5C2CD4453100963D4B /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
+		D147AF5E2CD4456800963D4B /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		D16CD46B2CC6C85900868FA4 /* WorldNewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldNewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16CD46E2CC6C85900868FA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D16CD4702CC6C85900868FA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +147,16 @@
 			path = ../Bookmark;
 			sourceTree = "<group>";
 		};
+		D147AF5B2CD4450F00963D4B /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				D147AF592CD4441400963D4B /* CategoryCell.swift */,
+				D147AF5C2CD4453100963D4B /* CategoriesView.swift */,
+				D147AF5E2CD4456800963D4B /* CategoriesViewController.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		D16CD4622CC6C85900868FA4 = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +185,7 @@
 				D106B5142CD3144B00D28526 /* StorageManager.swift */,
 				D16CD4772CC6C85C00868FA4 /* Assets.xcassets */,
 				D16CD47C2CC6C85C00868FA4 /* Info.plist */,
+				D147AF5B2CD4450F00963D4B /* Category */,
 				F4A918722CCD236600F3EF54 /* Controllers */,
 				D106B5182CD31C1500D28526 /* Bookmark */,
 				F4A918622CCD0E4300F3EF54 /* Extensions */,
@@ -329,6 +346,7 @@
 				F4A918692CCD11E800F3EF54 /* UIFont+Extension.swift in Sources */,
 				D16CD4732CC6C85900868FA4 /* ViewController.swift in Sources */,
 				E75929982CCDFDAD008C59ED /* TermsConditionsViewController.swift in Sources */,
+				D147AF5A2CD4441400963D4B /* CategoryCell.swift in Sources */,
 				F4A918672CCD0F2600F3EF54 /* UIColor+Extension.swift in Sources */,
 				F4A9186B2CCD1CC000F3EF54 /* AppColors.swift in Sources */,
 				E759299C2CCDFE71008C59ED /* LanguageCell.swift in Sources */,
@@ -340,12 +358,14 @@
 				D106B51C2CD31D5B00D28526 /* BookmarkViewController.swift in Sources */,
 				E759299A2CCDFE17008C59ED /* LanguageViewController.swift in Sources */,
 				F4A918762CCD236600F3EF54 /* HomeViewController.swift in Sources */,
+				D147AF5D2CD4453100963D4B /* CategoriesView.swift in Sources */,
 				11242F562CCC324000178851 /* ImageService.swift in Sources */,
 				11A9ABD62CCFE948006660DA /* OnboardingPage1VC.swift in Sources */,
 				11A9ABDA2CCFE963006660DA /* OnboardingPage3VC.swift in Sources */,
 				D106B5132CD3142400D28526 /* Category.swift in Sources */,
 				D106B5152CD3144B00D28526 /* StorageManager.swift in Sources */,
 				11242F4F2CCC314C00178851 /* HTTPClient.swift in Sources */,
+				D147AF5F2CD4456800963D4B /* CategoriesViewController.swift in Sources */,
 				D16CD4712CC6C85900868FA4 /* SceneDelegate.swift in Sources */,
 				D106B51A2CD31D0F00D28526 /* BookmarkView.swift in Sources */,
 				11242F532CCC319B00178851 /* Errors.swift in Sources */,
