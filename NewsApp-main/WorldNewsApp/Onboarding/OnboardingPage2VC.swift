@@ -76,7 +76,6 @@ final class OnboardingPage2VC: UIViewController {
         titleLabel.text = articles[1].title
         subtitleLabel.text = articles[1].description
         nextButton.setTitle("Next", for: .normal)
-        
         nextButton.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
     }
 }

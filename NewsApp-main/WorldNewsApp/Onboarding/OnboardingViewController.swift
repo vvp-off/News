@@ -25,6 +25,7 @@ final class OnboardingViewController: UIPageViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         chooseStartScreen()
+        setOnboardingPages()
         fetchNews(apiService: .technology)
     }
     
@@ -40,7 +41,7 @@ final class OnboardingViewController: UIPageViewController {
         if UserDefaultsService.shared.isOnboarding {
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                let sceneDelegate = windowScene.delegate as? SceneDelegate {
-                let nextVC = ViewController()
+                let nextVC = TabBarController()
                 sceneDelegate.window?.rootViewController = nextVC
             }
         } else {

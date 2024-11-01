@@ -38,7 +38,7 @@ final class OnboardingPage3VC: UIViewController {
         return label
     }()
     
-    private let nextButton: UIButton = {
+    private let startedButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 20
@@ -60,26 +60,12 @@ final class OnboardingPage3VC: UIViewController {
     // MARK: - Actions
     
     @objc private func startedButtonAction(_ sender: UIButton) {
-//        let startVC = ViewController()
-//        startVC.modalPresentationStyle = .popover
-//        present(startVC, animated: true)
-        
-//        changeInputScreen()
-        
         presentingController()
-        
         UserDefaultsService.shared.isOnboarding = true
     }
     
-//    private func changeInputScreen() {
-//        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let sceneDelegate = windowScene.delegate as? SceneDelegate {
-//            let nextVC = ViewController()
-//            sceneDelegate.window?.rootViewController = nextVC
-//            }
-//    }
-    
     private func presentingController() {
-        let nextVC = ViewController()
+        let nextVC = TabBarController()
         nextVC.modalPresentationStyle = .custom
         nextVC.transitioningDelegate = self
         present(nextVC, animated: true)
@@ -92,13 +78,13 @@ final class OnboardingPage3VC: UIViewController {
             imageView,
             titleLabel,
             subtitleLabel,
-            nextButton
+            startedButton
         ].forEach { view.addSubview($0) }
         
         titleLabel.text = articles[2].title
         subtitleLabel.text = articles[2].description
-        nextButton.setTitle("Get Started", for: .normal)
-        nextButton.addTarget(self, action: #selector(startedButtonAction), for: .touchUpInside)
+        startedButton.setTitle("Get Started", for: .normal)
+        startedButton.addTarget(self, action: #selector(startedButtonAction), for: .touchUpInside)
     }
 }
 
@@ -128,10 +114,10 @@ extension OnboardingPage3VC {
             subtitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
             subtitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
             
-            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
-            nextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            nextButton.heightAnchor.constraint(equalToConstant: 56)
+            startedButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
+            startedButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            startedButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            startedButton.heightAnchor.constraint(equalToConstant: 56)
         ])
     }
 }
