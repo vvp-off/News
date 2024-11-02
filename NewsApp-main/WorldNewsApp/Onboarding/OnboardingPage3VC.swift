@@ -11,7 +11,6 @@ final class OnboardingPage3VC: UIViewController {
     
     // MARK: - Properties
     
-    var articles: [News] = []
     let transitionManager = TransitionManager()
     
     private let imageView = ImageFactory.makeOnboardingImage(name: K.page3Image)
