@@ -49,8 +49,11 @@ final class HTTPClient {
                 if let httpResponse = response as? HTTPURLResponse {
                     switch httpResponse.statusCode {
                     case 200...299:
+//                        let loadData = try decoder.decode(NewsResponseModel.self, from: data)
+//                        return loadData.articles
                         let loadData = try decoder.decode(NewsResponseModel.self, from: data)
-                        return loadData.articles
+                        let filteredArticles = loadData.articles.filter { $0.title != "[Removed]" }
+                        return filteredArticles
                     case 401:
                         throw RequestError.apiKeyInvalid
                     case 403:
