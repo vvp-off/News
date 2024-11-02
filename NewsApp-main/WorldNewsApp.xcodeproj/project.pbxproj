@@ -17,7 +17,6 @@
 		117C85892CD617A8004533D4 /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117C85882CD617A8004533D4 /* LabelFactory.swift */; };
 		117C858B2CD62B6B004533D4 /* ButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117C858A2CD62B6B004533D4 /* ButtonFactory.swift */; };
 		117C858D2CD62D04004533D4 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117C858C2CD62D04004533D4 /* ImageFactory.swift */; };
-		117C858F2CD63BE2004533D4 /* Adamina-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 117C858E2CD63BE1004533D4 /* Adamina-Regular.ttf */; };
 		11A9ABD32CCFA1E5006660DA /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A9ABD22CCFA1E5006660DA /* OnboardingViewController.swift */; };
 		11A9ABD62CCFE948006660DA /* OnboardingPage1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A9ABD52CCFE948006660DA /* OnboardingPage1VC.swift */; };
 		11A9ABD82CCFE957006660DA /* OnboardingPage2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A9ABD72CCFE957006660DA /* OnboardingPage2VC.swift */; };
@@ -76,7 +75,6 @@
 		117C85882CD617A8004533D4 /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
 		117C858A2CD62B6B004533D4 /* ButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFactory.swift; sourceTree = "<group>"; };
 		117C858C2CD62D04004533D4 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
-		117C858E2CD63BE1004533D4 /* Adamina-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Adamina-Regular.ttf"; sourceTree = "<group>"; };
 		11A9ABD22CCFA1E5006660DA /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		11A9ABD52CCFE948006660DA /* OnboardingPage1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage1VC.swift; sourceTree = "<group>"; };
 		11A9ABD72CCFE957006660DA /* OnboardingPage2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage2VC.swift; sourceTree = "<group>"; };
