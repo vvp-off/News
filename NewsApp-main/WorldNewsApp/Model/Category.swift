@@ -8,7 +8,7 @@
 import Foundation
 
 struct Category: Codable {
-    enum Name: String, Codable {
+    enum Name: String, Codable, CaseIterable {
             case business = "💼  Business"
             case entertainment = "🎮  Entertainment"
             case general = "🌎  General"

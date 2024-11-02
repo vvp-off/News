@@ -13,6 +13,9 @@ final class HomeViewController: UIViewController {
     private var recArticles: [News]?
     private let collectionView: UICollectionView = .createCollectionView(with: .newsLayout())
     private var sections: [NewsSection] = [.search, .categories, .newsFromCategory, .recommendedNews]
+    private let categories: [String] = ["Entertainment", "Business", "Science", "Technology", "Sports", "Health"]
+    private var selectedCategory: String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +23,7 @@ final class HomeViewController: UIViewController {
         view.backgroundColor = .systemBackground
         configureNagivationBar()
         configureCollectionView()
-        
+        selectedCategory = categories.first
         fetchNews(apiService: .entertainment)
         fetchRecNews(apiService: .business)
         
@@ -76,15 +79,9 @@ final class HomeViewController: UIViewController {
                 let articles = try await httpClient.requestData(for: apiService)
                 self.recArticles = articles.map {News(from: $0) }
                 
-                //                 Здесь обновляем UI с нашими данными.
                 DispatchQueue.main.async {
                     self.collectionView.reloadSections(IndexSet(integer: 3))
                 }
-                
-                //                                просто тест вывода информации можно удалить
-//                for sourse in recArticles {
-//                    print(sourse.urlToImage ?? "")
-//                }
             }
             catch let error as RequestError {
                 print("Произошла ошибка: \(error.errorDescription ?? "Неизвестная ошибка")")
@@ -101,7 +98,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         case .search:
             1
         case .categories:
-            10
+            categories.count
         case .newsFromCategory:
             10
         case .recommendedNews:
@@ -138,7 +135,8 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.searchBar.delegate = self
             return cell
         case .categories:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategorieCell.identifier, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategorieCell.identifier, for: indexPath) as! CategorieCell
+            cell.configureCell(with: categories[indexPath.row])
             return cell
         case .newsFromCategory:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewFromCategoryCell.identifier, for: indexPath) as? NewFromCategoryCell else {
@@ -171,6 +169,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         switch section {
         case .categories:
             didSelectCategory(at: indexPath.item)
+            print(categories)
             print("Selected category #\(indexPath.item)")
         case .newsFromCategory, .recommendedNews:
             didSelectNew(at: indexPath.item)
