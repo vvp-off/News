@@ -113,6 +113,7 @@ extension CategoriesViewController {
     }
     
     @objc func buttonTapped(){
+        storageManager.setOnboarding()
         let nextVC = TabBarController()
         nextVC.modalPresentationStyle = .custom
         nextVC.transitioningDelegate = self
