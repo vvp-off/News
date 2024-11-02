@@ -5,9 +5,14 @@
 //  Created by Igor Guryan on 26.10.2024.
 //
 
-import Foundation
+import UIKit
 
 // MARK: - Sections
+
+struct Font {
+    let font: UIFont
+    let fontColour: UIColor
+}
 
 enum NewsSection: Int, Hashable, CaseIterable {
     case search
@@ -15,6 +20,13 @@ enum NewsSection: Int, Hashable, CaseIterable {
     case newsFromCategory
     case recommendedNews
 }
+
+enum TitleFont {
+    static let big = Font(font: .Inter.bold.size(of: 20), fontColour: AppColors.blackDark)
+    static let small = Font(font: .Inter.regular.size(of: 16), fontColour: AppColors.grayPrimary)
+    
+}
+
 
 enum HomeCategory: String, Hashable, CaseIterable {
     case random = "Random"

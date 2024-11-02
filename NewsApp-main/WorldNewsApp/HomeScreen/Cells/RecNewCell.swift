@@ -23,7 +23,7 @@ class RecNewCell: UICollectionViewCell {
         label.text = "The latest situation in the presidential election"
         label.font = .Inter.medium.size(of: 16)
         label.textColor = AppColors.blackPrimary
-        label.numberOfLines = 0
+        label.numberOfLines = 3
         
         return label
     }()
@@ -79,4 +79,14 @@ class RecNewCell: UICollectionViewCell {
             newNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
                 ])
     }
+    
+    func configureCell(image: URL?, topic: String, news: String, newsData: News) {
+        categoryNameLabel.text = topic
+        newNameLabel.text = news
+            
+//            if let image = image {
+//                latestNewsImage.kf.setImage(with: image)
+//            } else {
+//                latestNewsImage.image = UIImage(named: "berlin")
+            }
 }
