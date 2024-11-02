@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserViewController: UITableViewController {
+class UserViewController: UITableViewController, UIViewControllerTransitioningDelegate {
     
     private var rows: [[String]] = [
         ["Dev P, dev@gmail.com"],     // Секция 0 -  User Information
@@ -69,7 +69,7 @@ extension UserViewController {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserInfoCell", for: indexPath) as? UserInfoCell else {
                 return UITableViewCell()
             }
-            cell.configure(name: "Dev P", email: "dev@gmail.com")
+            cell.configure(name: storageManager.getCurrentUser().username, email: storageManager.getCurrentUser().email)
             return cell
 
         case "Language":
@@ -121,8 +121,10 @@ extension UserViewController {
         case "Sign Out":
             storageManager.logOut()
             storageManager.clearUserData()
-            let onboardingVC = OnboardingViewController()
-            present(onboardingVC, animated: true)
+            let nextVC = OnboardingViewController()
+            nextVC.modalPresentationStyle = .custom
+            nextVC.transitioningDelegate = self
+            present(nextVC, animated: true)
             
         default:
             break

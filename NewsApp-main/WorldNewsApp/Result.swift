@@ -72,7 +72,7 @@ class ResultViewController: UIViewController {
         labelCategory.textAlignment = .center
         labelCategory.layer.cornerRadius = 16
         labelCategory.layer.masksToBounds = true
-        labelCategory.drawText(in: <#T##CGRect#>)
+        //labelCategory.drawText(in: <#T##CGRect#>)
         labelCategory.backgroundColor = AppColors.purplePrimary
         
         let label = UILabel()
