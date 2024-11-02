@@ -12,7 +12,6 @@ final class OnboardingPage2VC: UIViewController {
     // MARK: - Properties
     
     weak var delegate: OnboardingDelegate?
-    var articles: [News] = []
     
     private let imageView = ImageFactory.makeOnboardingImage(name: K.page2Image)
     private let titleLabel = LabelFactory.createTitleLabel(with: K.titleNews.page2.rawValue)

@@ -25,7 +25,6 @@ final class OnboardingViewController: UIPageViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         chooseStartScreen()
-        setOnboardingPages()
         fetchNews(apiService: .technology)
     }
     
@@ -45,19 +44,23 @@ final class OnboardingViewController: UIPageViewController {
                 sceneDelegate.window?.rootViewController = nextVC
             }
         } else {
-            setDelegate()
-            setOnboardingPages()
-            setPageControl()
+            setOnboardingVC()
         }
     }
     
     private func setOnboardingVC() {
         view.addSubview(pageControl)
-        setViewControllers([onboardingPages[initialPage]], direction: .forward, animated: true)
+        setDelegate()
+        setOnboardingPages()
+        setPageControl()
         setConstraints()
+        if !onboardingPages.isEmpty {
+            setViewControllers([onboardingPages[initialPage]], direction: .forward, animated: true)
+        }
     }
     
     private func setOnboardingPages() {
+        onboardingPages.removeAll()
         [page1, page2, page3].forEach {onboardingPages.append($0)}
     }
     
@@ -71,7 +74,7 @@ final class OnboardingViewController: UIPageViewController {
                 
                 // Здесь обновляем UI с нашими данными.
                 DispatchQueue.main.async {
-                    self.setOnboardingVC()
+                    //                    self.setOnboardingVC()
                 }
                 //                удалить потом просто проверка
                 for sourse in articles {
@@ -161,7 +164,8 @@ extension OnboardingViewController {
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             pageControl.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            pageControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            pageControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
     }
 }
