@@ -65,7 +65,16 @@ final class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       10
+        switch sections[section] {
+        case .search:
+            1
+        case .categories:
+            10
+        case .newsFromCategory:
+            5
+        case .recommendedNews:
+            5
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -74,10 +83,14 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeaderView.identifier, for: indexPath) as! SectionHeaderView
-        
-        header.configure(with: "Recommended for you", buttonTitle: "See All", tapAction: didTapSeeAll)
+        if sections[indexPath.section] == .search {
+            header.configure(with: "Discover things of this world", titleFont: TitleFont.small, isButtonHidden: true, buttonTitle: "See All", tapAction: didTapSeeAll)
+            return header
+        } else if sections[indexPath.section] == .recommendedNews {
+            header.configure(with: "Recommended for you", titleFont: TitleFont.big, isButtonHidden: false, buttonTitle: "See All", tapAction: didTapSeeAll)
+            return header
+        }
         return header
-  
    }
     
     func configureNagivationBar() {
