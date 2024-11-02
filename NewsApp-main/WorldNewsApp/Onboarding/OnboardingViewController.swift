@@ -69,11 +69,6 @@ final class OnboardingViewController: UIPageViewController {
                 let articles = try await httpClient.requestData(for: apiService)
                 self.articles = articles.map {News(from: $0) }
                 
-//                if self.articles.count > 0 {
-//                    self.page1.articles = self.articles
-//                    self.page2.articles = self.articles
-//                    self.page3.articles = self.articles
-//                }
                 // Здесь обновляем UI с нашими данными.
                 DispatchQueue.main.async {
                     self.setOnboardingVC()
@@ -97,8 +92,8 @@ final class OnboardingViewController: UIPageViewController {
     }
     
     private func setPageControl() {
-        pageControl.currentPageIndicatorTintColor = .systemGray
-        pageControl.pageIndicatorTintColor = .systemBlue
+        pageControl.currentPageIndicatorTintColor = AppColors.grayLighter
+        pageControl.pageIndicatorTintColor = AppColors.blue
         pageControl.transform = CGAffineTransform(scaleX: 1.5, y: 0.8)
         pageControl.numberOfPages = onboardingPages.count
         pageControl.currentPage = initialPage

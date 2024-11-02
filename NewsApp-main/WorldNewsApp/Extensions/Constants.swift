@@ -17,7 +17,7 @@ struct K {
     static let page1Description = "Получайте доступ к самым популярным новостям в мире. Узнавайте о важных событиях, трендах и актуальных темах первым. Оставайтесь всегда в центре событий!"
     static let page2Description = "Мы собрали новости по категориям, чтобы вам было проще найти интересующее. От политики до технологий — выбирайте то, что действительно важно для вас."
     static let page3Description = "Персонализируйте свою ленту и следите только за теми темами, которые вам важны. Читайте больше о том, что вам интересно, и тратьте время с пользой!"
-    static let page1TitleImage = ""
-    static let page2TitleImage = ""
-    static let page3TitleImage = ""
+    static let page1Image = "page1"
+    static let page2Image = "page2"
+    static let page3Image = "page3"
 }

@@ -14,27 +14,10 @@ final class OnboardingPage3VC: UIViewController {
     var articles: [News] = []
     let transitionManager = TransitionManager()
     
-    private let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "tempImage")
-        imageView.contentMode = .scaleToFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    private let titleLabel = UILabel(font: .systemFont(ofSize: 24, weight: .bold))
-    private let subtitleLabel = UILabel(font: .systemFont(ofSize: 14, weight: .medium))
-    
-    private let startedButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 20
-        button.setTitle("", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        button.setTitleColor(.white, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    private let imageView = ImageFactory.makeOnboardingImage(name: K.page3Image)
+    private let titleLabel = LabelFactory.createTitleLabel(with: K.titleNews.page3.rawValue)
+    private let subtitleLabel = LabelFactory.createSubtitleLabel(with: K.page3Description)
+    private let startedButton = ButtonFactory.makeButtonWithText(text: "Get Started")
     
     // MARK: - LifeCycle
     
@@ -68,9 +51,6 @@ final class OnboardingPage3VC: UIViewController {
             startedButton
         ].forEach { view.addSubview($0) }
         
-        titleLabel.text = K.titleNews.page3.rawValue
-        subtitleLabel.text = K.page3Description
-        startedButton.setTitle("Get Started", for: .normal)
         startedButton.addTarget(self, action: #selector(startedButtonAction), for: .touchUpInside)
     }
 }
