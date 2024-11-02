@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1106CD262CD6EAE9005FCCB9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1106CD252CD6EAE9005FCCB9 /* Kingfisher */; };
 		11242F4A2CCC305D00178851 /* NewsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11242F492CCC305D00178851 /* NewsResponseModel.swift */; };
 		11242F4C2CCC30A000178851 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11242F4B2CCC30A000178851 /* News.swift */; };
 		11242F4F2CCC314C00178851 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11242F4E2CCC314C00178851 /* HTTPClient.swift */; };
@@ -139,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1106CD262CD6EAE9005FCCB9 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +404,9 @@
 				ru,
 			);
 			mainGroup = D16CD4622CC6C85900868FA4;
+			packageReferences = (
+				1106CD242CD6EAE9005FCCB9 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = D16CD46C2CC6C85900868FA4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -709,6 +714,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1106CD242CD6EAE9005FCCB9 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1106CD252CD6EAE9005FCCB9 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1106CD242CD6EAE9005FCCB9 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D16CD4632CC6C85900868FA4 /* Project object */;
 }

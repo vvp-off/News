@@ -29,6 +29,24 @@ final class LabelFactory {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }
+    
+    static func paddingLabel(text: String) -> NSAttributedString {
+        let label = UILabel()
+        label.numberOfLines = 0
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center // Центрирование текста
+        paragraphStyle.firstLineHeadIndent = 10 // Отступ первой строки
+        paragraphStyle.headIndent = 5 // Отступ слева для остальных строк
+        paragraphStyle.tailIndent = -5 // Отступ справа
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .paragraphStyle: paragraphStyle,
+            .foregroundColor: UIColor.black,// цвета и шрифт глянь поставь который надо
+            .font: UIFont.systemFont(ofSize: 16)
+        ]
+        
+        let attributedString = NSAttributedString(string: text, attributes: attributes)
+        return attributedString
+    }
 }
-
-
