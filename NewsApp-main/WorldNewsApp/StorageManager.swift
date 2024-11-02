@@ -23,6 +23,8 @@ protocol StorageManagerProtocol {
     func logIn()
     func logOut()
     func clearUserData()
+    func setOnboarding()
+    func isOnboardingDone() -> Bool
 }
 
 final class StorageManager {
@@ -32,6 +34,7 @@ final class StorageManager {
         case isLoggedIn
         case categories
         case currentUser
+        case isOnboargingDone
     }
 
     private let userDefaults = UserDefaults.standard
@@ -134,9 +137,20 @@ extension StorageManager: StorageManagerProtocol {
         store(false, forKey: .isLoggedIn)
     }
     
+    func setOnboarding() {
+        store(true, forKey: .isOnboargingDone)
+    }
+    
+    func isOnboardingDone() -> Bool {
+        restore(forKey: .isOnboargingDone, as: Bool.self) ?? false
+    }
+    
+    
     func clearUserData() {
-        UserDefaults.standard.removeObject(forKey: Keys.currentUser.rawValue)
-        UserDefaults.standard.removeObject(forKey: Keys.categories.rawValue)
-        UserDefaults.standard.removeObject(forKey: Keys.favouriteArticles.rawValue)
+        let emptyCategories: [Category] = []
+        let emptyFavouriteArticles: [Category] = []
+        store(emptyCategories, forKey: .categories)
+        store(emptyFavouriteArticles, forKey: .categories)
+        UserDefaults.standard.removeObject(forKey: "currentUser")
     }
 }

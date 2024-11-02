@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoriesViewController: UIViewController {
+class CategoriesViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     //MARK: - Properties
     let categoriesView = CategoriesView()
@@ -17,11 +17,12 @@ class CategoriesViewController: UIViewController {
     let categoryArray = [{Category(name: .business)}, {Category(name: .entertainment)}, {Category(name: .general)}, {Category(name: .health)}, {Category(name: .technology)}, {Category(name: .science)}, {Category(name: .sports)}]
     
     var cellColor = UIColor(named: "white")
-    let onBoardingIsDone = true
+    var onBoardingIsDone: Bool = false
 
     //MARK: - Life cycle
     override func loadView() {
         view = categoriesView
+        onBoardingIsDone = storageManager.isOnboardingDone()
         categoriesView.collectionView.dataSource = self
         categoriesView.collectionView.delegate = self
         categoriesView.collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: "cell")
@@ -112,7 +113,10 @@ extension CategoriesViewController {
     }
     
     @objc func buttonTapped(){
-        tabBarController?.selectedIndex = 0
+        let nextVC = TabBarController()
+        nextVC.modalPresentationStyle = .custom
+        nextVC.transitioningDelegate = self
+        present(nextVC, animated: true)
     }
 }
 

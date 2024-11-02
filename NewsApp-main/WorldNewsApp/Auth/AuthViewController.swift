@@ -9,7 +9,7 @@
 
 import UIKit
 
-class AuthViewController: UIViewController, UITextFieldDelegate {
+class AuthViewController: UIViewController, UITextFieldDelegate, UIViewControllerTransitioningDelegate {
     
     enum AuthState {
         case signUp
@@ -63,9 +63,18 @@ private extension AuthViewController {
             storageManager.addUser(user)
             storageManager.logIn()
             storageManager.setCurrentUser(user)
-            print("You created a user and logged in")
+            
+            let nextVC = CategoriesViewController()
+            nextVC.modalPresentationStyle = .custom
+            nextVC.transitioningDelegate = self
+            present(nextVC, animated: true)
+            
         } else {
             logIn()
+            let nextVC = TabBarController()
+            nextVC.modalPresentationStyle = .custom
+            nextVC.transitioningDelegate = self
+            present(nextVC, animated: true)
         }
     }
     
@@ -143,20 +152,11 @@ private extension AuthViewController {
         
         if let user = users.first(where: { $0.email == email }) {
             if user.password == password {
-                authView.showWarningMessage("Welcome back!")
                 
-                //log in
                 let currentUser = User(username: user.username, email: email, password: password)
                 storageManager.logIn()
                 storageManager.setCurrentUser(currentUser)
-                print(storageManager.isLoggedIn())
-                print(storageManager.getCurrentUser())
-                print("You logged in")
-                
-                //log out
-//                storageManager.logOut()
-//                storageManager.clearUserData()
-//                print("You logged out")
+
                 
             } else {
                 authView.showWarningMessage("Incorrect password.")

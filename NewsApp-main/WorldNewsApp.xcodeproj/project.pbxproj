@@ -37,6 +37,8 @@
 		D106B5152CD3144B00D28526 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D106B5142CD3144B00D28526 /* StorageManager.swift */; };
 		D119A65B2CD6B7FE005756F3 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D119A65A2CD6B7FE005756F3 /* AuthView.swift */; };
 		D119A65E2CD6B865005756F3 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D119A65D2CD6B865005756F3 /* AuthViewController.swift */; };
+		D119A6602CD6B8F9005756F3 /* UITextField_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D119A65F2CD6B8F9005756F3 /* UITextField_Extension.swift */; };
+		D119A6622CD6B933005756F3 /* UILabel_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D119A6612CD6B933005756F3 /* UILabel_Extension.swift */; };
 		D145C7002CD6B513009D679A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D145C6FF2CD6B513009D679A /* User.swift */; };
 		D147AF5A2CD4441400963D4B /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D147AF592CD4441400963D4B /* CategoryCell.swift */; };
 		D147AF5D2CD4453100963D4B /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D147AF5C2CD4453100963D4B /* CategoriesView.swift */; };
@@ -98,6 +100,8 @@
 		D106B5142CD3144B00D28526 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		D119A65A2CD6B7FE005756F3 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		D119A65D2CD6B865005756F3 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		D119A65F2CD6B8F9005756F3 /* UITextField_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField_Extension.swift; sourceTree = "<group>"; };
+		D119A6612CD6B933005756F3 /* UILabel_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel_Extension.swift; sourceTree = "<group>"; };
 		D145C6FF2CD6B513009D679A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D147AF592CD4441400963D4B /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		D147AF5C2CD4453100963D4B /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
@@ -298,6 +302,8 @@
 				117C85882CD617A8004533D4 /* LabelFactory.swift */,
 				117C858A2CD62B6B004533D4 /* ButtonFactory.swift */,
 				117C858C2CD62D04004533D4 /* ImageFactory.swift */,
+				D119A65F2CD6B8F9005756F3 /* UITextField_Extension.swift */,
+				D119A6612CD6B933005756F3 /* UILabel_Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -431,6 +437,7 @@
 				F44BE0802CD27782002FAB03 /* Result.swift in Sources */,
 				F4A918692CCD11E800F3EF54 /* UIFont+Extension.swift in Sources */,
 				D16CD4732CC6C85900868FA4 /* ViewController.swift in Sources */,
+				D119A6602CD6B8F9005756F3 /* UITextField_Extension.swift in Sources */,
 				E75929982CCDFDAD008C59ED /* TermsConditionsViewController.swift in Sources */,
 				D147AF5A2CD4441400963D4B /* CategoryCell.swift in Sources */,
 				F4A918672CCD0F2600F3EF54 /* UIColor+Extension.swift in Sources */,
@@ -447,6 +454,7 @@
 				D147AF5D2CD4453100963D4B /* CategoriesView.swift in Sources */,
 				117C858D2CD62D04004533D4 /* ImageFactory.swift in Sources */,
 				11242F562CCC324000178851 /* ImageService.swift in Sources */,
+				D119A6622CD6B933005756F3 /* UILabel_Extension.swift in Sources */,
 				11A9ABD62CCFE948006660DA /* OnboardingPage1VC.swift in Sources */,
 				D145C7002CD6B513009D679A /* User.swift in Sources */,
 				11A9ABDA2CCFE963006660DA /* OnboardingPage3VC.swift in Sources */,
