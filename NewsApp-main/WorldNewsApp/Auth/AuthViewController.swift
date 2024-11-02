@@ -7,6 +7,7 @@
 
 
 
+
 import UIKit
 
 class AuthViewController: UIViewController, UITextFieldDelegate, UIViewControllerTransitioningDelegate {
@@ -60,6 +61,7 @@ private extension AuthViewController {
                 email: authView.emailTextField.text?.lowercased() ?? "",
                 password: authView.passwordTextField.text ?? ""
             )
+            storageManager.clearUserData()
             storageManager.addUser(user)
             storageManager.logIn()
             storageManager.setCurrentUser(user)
@@ -71,10 +73,6 @@ private extension AuthViewController {
             
         } else {
             logIn()
-            let nextVC = TabBarController()
-            nextVC.modalPresentationStyle = .custom
-            nextVC.transitioningDelegate = self
-            present(nextVC, animated: true)
         }
     }
     
@@ -144,27 +142,36 @@ private extension AuthViewController {
 
 
 private extension AuthViewController {
+    
     func logIn() {
+        
         guard let email = authView.emailTextField.text?.lowercased(),
               let password = authView.passwordTextField.text else { return }
         
         let users = storageManager.getUsers()
         
-        if let user = users.first(where: { $0.email == email }) {
-            if user.password == password {
-                
-                let currentUser = User(username: user.username, email: email, password: password)
-                storageManager.logIn()
-                storageManager.setCurrentUser(currentUser)
-
-                
-            } else {
-                authView.showWarningMessage("Incorrect password.")
-            }
+        if let matchedUser = users.first(where: { $0.email == email && $0.password == password }) {
+            let username = matchedUser.username
+            
+            let currentUser = User(username: username, email: email, password: password)
+            
+            storageManager.logIn()
+            storageManager.setCurrentUser(currentUser)
+            
+            let nextVC = TabBarController()
+            nextVC.modalPresentationStyle = .custom
+            nextVC.transitioningDelegate = self
+            present(nextVC, animated: true)
+        
         } else {
-            authView.showWarningMessage("User does not exist.")
+            print("No user found with matching email and password.")
+            return
         }
+        
+ 
     }
-
 }
 
+
+        
+ 

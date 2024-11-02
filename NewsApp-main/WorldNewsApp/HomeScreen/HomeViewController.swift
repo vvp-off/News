@@ -99,13 +99,13 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch sections[section] {
         case .search:
-            1
+            return 1
         case .categories:
-            10
+            return 10
         case .newsFromCategory:
-            10
+            return 10
         case .recommendedNews:
-            10
+            return 10
         }
     }
     
