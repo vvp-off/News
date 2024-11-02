@@ -15,7 +15,7 @@ class UserViewController: UITableViewController {
         ["Terms & Conditions"],        // Секция 2 - Secondary Settings
         ["Sign Out"]                   // Секция 3 - Logout
     ]
-    
+    let storageManager = StorageManager()
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
@@ -118,6 +118,11 @@ extension UserViewController {
             if let tabBarVC = navigationController?.tabBarController as? TabBarController {
                 tabBarVC.selectedIndex = 0
             }
+        case "Sign Out":
+            storageManager.logOut()
+            storageManager.clearUserData()
+            let onboardingVC = OnboardingViewController()
+            present(onboardingVC, animated: true)
             
         default:
             break

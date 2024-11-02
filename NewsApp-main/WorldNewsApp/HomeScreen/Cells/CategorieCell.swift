@@ -12,6 +12,19 @@ class CategorieCell: UICollectionViewCell {
     
     private let titleLabel = UILabel()
     
+    override var isSelected: Bool {
+            didSet {
+                if isSelected {
+                    contentView.backgroundColor = AppColors.purplePrimary
+                    titleLabel.textColor = .white
+                    
+                } else {
+                    contentView.backgroundColor = AppColors.grayLighter
+                    titleLabel.textColor = AppColors.grayDark
+                }
+            }
+        }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -35,8 +48,8 @@ class CategorieCell: UICollectionViewCell {
         titleLabel.text = "Category"
         titleLabel.font = .Inter.medium.size(of: 12)
         titleLabel.textColor = AppColors.grayPrimary
-        
-        titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+//        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
     }
 }

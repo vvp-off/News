@@ -10,7 +10,7 @@ import UIKit
 class SearchCell: UICollectionViewCell {
     static let identifier = String(describing: SearchCell.self)
     
-    private let searchBar: UISearchBar = {
+    let searchBar: UISearchBar = {
         let search = UISearchBar()
         search.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         search.searchTextField.font = .Inter.regular.size(of: 16)
@@ -21,7 +21,7 @@ class SearchCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        searchBar.frame = bounds
         setupCell()
     }
     
@@ -33,10 +33,10 @@ class SearchCell: UICollectionViewCell {
         contentView.disableChildrenTAMIC()
         contentView.addSubview(searchBar)
         
-        NSLayoutConstraint.activate([
-            searchBar.heightAnchor.constraint(equalToConstant: 56),
-            searchBar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            searchBar.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
-        ])
+//        NSLayoutConstraint.activate([
+//            searchBar.heightAnchor.constraint(equalToConstant: 40),
+//            searchBar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+//            searchBar.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 20)
+//        ])
     }
 }

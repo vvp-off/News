@@ -9,8 +9,10 @@ import UIKit
 
 final class HomeViewController: UIViewController {
     
+    private var articles: [News]?
+    private var recArticles: [News]?
     private let collectionView: UICollectionView = .createCollectionView(with: .newsLayout())
-    private var sections = [NewsSection]()
+    private var sections: [NewsSection] = [.search, .categories, .newsFromCategory, .recommendedNews]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,19 +20,15 @@ final class HomeViewController: UIViewController {
         view.backgroundColor = .systemBackground
         configureNagivationBar()
         configureCollectionView()
-        fetchData()
+        
+        fetchNews(apiService: .entertainment)
+        fetchRecNews(apiService: .business)
         
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.frame = view.bounds
-        
-//        NSLayoutConstraint.activate([
-//            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100)])
-//            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
     }
     
     private func configureCollectionView() {
@@ -43,29 +41,72 @@ final class HomeViewController: UIViewController {
         collectionView.register(SearchCell.self, forCellWithReuseIdentifier: SearchCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
-        
-//        NSLayoutConstraint.activate([
-//            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100)])
-//            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-////            collectionView.widthAnchor.constraint(equalToConstant: 96),
     }
     
-    private func fetchData() {
-        //Categories
-        //News from categorie
-        //Recommended for you
-        sections.append(.search)
-        sections.append(.categories)
-        sections.append(.newsFromCategory)
-        sections.append(.recommendedNews)
+    func fetchNews(apiService: ApiService) {
+        let httpClient = HTTPClient(with: .default)
+        
+        Task {
+            do {
+                let articles = try await httpClient.requestData(for: apiService)
+                self.articles = articles.map {News(from: $0) }
+                
+                //                 Здесь обновляем UI с нашими данными.
+                DispatchQueue.main.async {
+                    self.collectionView.reloadSections(IndexSet(integer: 2))
+                }
+                
+                //                                просто тест вывода информации можно удалить
+                for sourse in articles {
+                    print(sourse.urlToImage ?? "")
+                }
+            }
+            catch let error as RequestError {
+                print("Произошла ошибка: \(error.errorDescription ?? "Неизвестная ошибка")")
+            }
+        }
+    }
+    
+    func fetchRecNews(apiService: ApiService) {
+        
+        let httpClient = HTTPClient(with: .default)
+        
+        Task {
+            do {
+                let articles = try await httpClient.requestData(for: apiService)
+                self.recArticles = articles.map {News(from: $0) }
+                
+                //                 Здесь обновляем UI с нашими данными.
+                DispatchQueue.main.async {
+                    self.collectionView.reloadSections(IndexSet(integer: 3))
+                }
+                
+                //                                просто тест вывода информации можно удалить
+//                for sourse in recArticles {
+//                    print(sourse.urlToImage ?? "")
+//                }
+            }
+            catch let error as RequestError {
+                print("Произошла ошибка: \(error.errorDescription ?? "Неизвестная ошибка")")
+            }
+        }
     }
 }
 
+
+
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       10
+        switch sections[section] {
+        case .search:
+            1
+        case .categories:
+            10
+        case .newsFromCategory:
+            10
+        case .recommendedNews:
+            10
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -74,10 +115,14 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeaderView.identifier, for: indexPath) as! SectionHeaderView
-        
-        header.configure(with: "Recommended for you", buttonTitle: "See All", tapAction: didTapSeeAll)
+        if sections[indexPath.section] == .search {
+            header.configure(with: "Discover things of this world", titleFont: TitleFont.small, isButtonHidden: true, buttonTitle: "See All", tapAction: didTapSeeAll)
+            return header
+        } else if sections[indexPath.section] == .recommendedNews {
+            header.configure(with: "Recommended for you", titleFont: TitleFont.big, isButtonHidden: false, buttonTitle: "See All", tapAction: didTapSeeAll)
+            return header
+        }
         return header
-  
    }
     
     func configureNagivationBar() {
@@ -89,16 +134,33 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         let section = sections[indexPath.section]
         switch section {
         case .search:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.identifier, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.identifier, for: indexPath) as! SearchCell
+            cell.searchBar.delegate = self
             return cell
         case .categories:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategorieCell.identifier, for: indexPath)
             return cell
         case .newsFromCategory:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewFromCategoryCell.identifier, for: indexPath)
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewFromCategoryCell.identifier, for: indexPath) as? NewFromCategoryCell else {
+                return UICollectionViewCell()
+            }
+            if let news = articles?[indexPath.row] {
+                            let imageUrl = news.urlToImage != nil ? URL(string: news.urlToImage) : nil
+                            let topic = news.sourceName
+                            let newsTitle = news.title
+
+                            cell.configureCell(image: imageUrl, topic: topic, news: newsTitle, newsData: news)
+                        } else {
+                            cell.newImageView.image = UIImage(named: "city_6")
+                            cell.categoryNameLabel.text = "НОВОСТЬ"
+                            cell.newNameLabel.text = "ТЕМА"
+                        }
             return cell
         case .recommendedNews:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecNewCell.identifier, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecNewCell.identifier, for: indexPath) as! RecNewCell
+            if let news = recArticles?[indexPath.row] {
+                cell.configureCell(image: URL(string: news.urlToImage ?? ""), topic: news.sourceName ?? "", news: news.title ?? "", newsData: news)
+            }
             return cell
         }
         
@@ -134,4 +196,46 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         // Переход на экран result и передача туда новости
     }
     
+}
+
+extension HomeViewController: UISearchBarDelegate {
+    
+    func fetchSearchNews(apiService: ApiService) {
+        
+        let httpClient = HTTPClient(with: .default)
+        
+        Task {
+            do {
+                let articles = try await httpClient.requestData(for: apiService)
+                let news = articles.map {News(from: $0) }
+                
+                //                 Здесь обновляем UI с нашими данными.
+                DispatchQueue.main.async {
+                    //present Bookmark(with: news)
+                }
+            }
+            catch let error as RequestError {
+                print("Произошла ошибка: \(error.errorDescription ?? "Неизвестная ошибка")")
+            }
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        if searchBar.text != "" {
+            return true
+        } else {
+            searchBar.placeholder = "Введите запрос"
+            return false
+        }
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if let search = searchBar.text {
+            fetchSearchNews(apiService: .search(search))
+        }
+    }
 }

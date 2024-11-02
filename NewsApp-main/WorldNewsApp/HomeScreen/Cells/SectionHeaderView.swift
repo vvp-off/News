@@ -16,7 +16,7 @@ class SectionHeaderView: UICollectionReusableView {
     
     lazy var maintitle: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 20, weight: .bold)
+//        view.font = .systemFont(ofSize: 20, weight: .bold)
         view.textAlignment = .left
         view.text = "Section title"
         return view
@@ -46,23 +46,28 @@ class SectionHeaderView: UICollectionReusableView {
     func setupConstraints() {
         NSLayoutConstraint.activate([
             maintitle.topAnchor.constraint(equalTo: topAnchor),
-            maintitle.leadingAnchor.constraint(equalTo: leadingAnchor),
+            maintitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 6),
             maintitle.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             button.trailingAnchor.constraint(equalTo: trailingAnchor),
             button.bottomAnchor.constraint(equalTo: bottomAnchor),
             button.topAnchor.constraint(equalTo: topAnchor),
-            button.leadingAnchor.constraint(equalTo: maintitle.trailingAnchor)
+            button.leadingAnchor.constraint(equalTo: maintitle.trailingAnchor, constant: -6)
         ])
         
     }
     
     func configure(with title: String,
-                   buttonTitle: String,
+                   titleFont: Font,
+                   isButtonHidden: Bool = true,
+                   buttonTitle: String?,
                    tapAction: @escaping () -> Void) {
         maintitle.text = title
+        maintitle.textColor = titleFont.fontColour
+        maintitle.font = titleFont.font
         button.setTitle(buttonTitle, for: .normal)
         buttonEvent = tapAction
+        button.isHidden = isButtonHidden
     }
     
     @objc func buttonTapped() {
