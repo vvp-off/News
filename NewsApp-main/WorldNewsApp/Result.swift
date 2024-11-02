@@ -7,6 +7,24 @@
 
 import UIKit
 
+struct ArticleForResult {
+    let author: String
+    let title: String
+    let category: String
+    let publicationDate: String
+    let content: String
+    var imageUrl: String? // URL изображения
+    
+    init(author: String, title: String, category: String, publicationDate: String, content: String, imageUrl: String? = nil) {
+        self.author = author
+        self.title = title
+        self.category = category
+        self.publicationDate = publicationDate
+        self.content = content
+        self.imageUrl = imageUrl
+    }
+}
+
 class ResultViewController: UIViewController {
     private var isFavorite: Bool = false
     
