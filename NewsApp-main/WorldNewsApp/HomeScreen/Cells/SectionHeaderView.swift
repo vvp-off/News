@@ -46,13 +46,13 @@ class SectionHeaderView: UICollectionReusableView {
     func setupConstraints() {
         NSLayoutConstraint.activate([
             maintitle.topAnchor.constraint(equalTo: topAnchor),
-            maintitle.leadingAnchor.constraint(equalTo: leadingAnchor),
+            maintitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 6),
             maintitle.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             button.trailingAnchor.constraint(equalTo: trailingAnchor),
             button.bottomAnchor.constraint(equalTo: bottomAnchor),
             button.topAnchor.constraint(equalTo: topAnchor),
-            button.leadingAnchor.constraint(equalTo: maintitle.trailingAnchor)
+            button.leadingAnchor.constraint(equalTo: maintitle.trailingAnchor, constant: -6)
         ])
         
     }

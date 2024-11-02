@@ -27,6 +27,14 @@ class NewFromCategoryCell: UICollectionViewCell {
         return label
     }()
     
+    private lazy var bookmarkButton: UIButton = {
+            let element = UIButton()
+            element.tintColor = .white
+            element.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
+            element.addTarget(self, action: #selector(addToBookmarks), for: .touchUpInside)
+            return element
+        }()
+    
     lazy var newImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "article")
@@ -44,6 +52,24 @@ class NewFromCategoryCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc private func addToBookmarks() {
+//           if bookMarkChangeColor == false {
+//               bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+//               bookMarkButton.tintColor = .purplePrimary
+//               bookMarkChangeColor = true
+//   //            guard let data = newsData else { return }
+//   //            //print(data)
+//   //            bookmarkManager.saveNewsToDefaults(news: data)
+//           } else {
+//               bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
+//               bookMarkButton.tintColor = .white
+//               bookMarkChangeColor = false
+//   //            guard let data = newsData else { return }
+//   //            //print(data)
+//   //            bookmarkManager.deleteNewsFromDefaults(news: data)
+//           }
+       }
+    
     private func setupCell() {
         contentView.layer.cornerRadius = 12
         contentView.layer.masksToBounds = true
@@ -56,11 +82,19 @@ class NewFromCategoryCell: UICollectionViewCell {
         contentView.addSubview(newImageView)
         contentView.addSubview(categoryNameLabel)
         contentView.addSubview(newNameLabel)
+        contentView.addSubview(bookmarkButton)
 
         NSLayoutConstraint.activate([
             newNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             newNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            newNameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24)])
+            newNameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24),
+        
+//            bookmarkButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
+//            bookmarkButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            
+            bookmarkButton.topAnchor.constraint(equalTo: newImageView.topAnchor, constant: 24),
+            bookmarkButton.trailingAnchor.constraint(equalTo: newImageView.trailingAnchor, constant: -24)
+        ])
         
         NSLayoutConstraint.activate([
             categoryNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
@@ -70,7 +104,10 @@ class NewFromCategoryCell: UICollectionViewCell {
             newImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             newImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             newImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            newImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)])
+            newImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+        
+            
+        ])
     }
     
     func configure(with new: New) {
