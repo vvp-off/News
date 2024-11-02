@@ -23,10 +23,10 @@ final class OnboardingViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchNews(apiService: .technology)
-        setDelegate()
+        view.backgroundColor = .white
+        chooseStartScreen()
         setOnboardingPages()
-        setPageControl()
+        fetchNews(apiService: .technology)
     }
     
     // MARK: - Actions
@@ -37,8 +37,21 @@ final class OnboardingViewController: UIPageViewController {
     
     // MARK: - Methods
     
+    private func chooseStartScreen() {
+        if UserDefaultsService.shared.isOnboarding {
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let sceneDelegate = windowScene.delegate as? SceneDelegate {
+                let nextVC = TabBarController()
+                sceneDelegate.window?.rootViewController = nextVC
+            }
+        } else {
+            setDelegate()
+            setOnboardingPages()
+            setPageControl()
+        }
+    }
+    
     private func setOnboardingVC() {
-        view.backgroundColor = .white
         view.addSubview(pageControl)
         setViewControllers([onboardingPages[initialPage]], direction: .forward, animated: true)
         setConstraints()
@@ -56,11 +69,6 @@ final class OnboardingViewController: UIPageViewController {
                 let articles = try await httpClient.requestData(for: apiService)
                 self.articles = articles.map {News(from: $0) }
                 
-                if self.articles.count > 0 {
-                    self.page1.articles = self.articles
-                    self.page2.articles = self.articles
-                    self.page3.articles = self.articles
-                }
                 // Здесь обновляем UI с нашими данными.
                 DispatchQueue.main.async {
                     self.setOnboardingVC()
@@ -84,11 +92,11 @@ final class OnboardingViewController: UIPageViewController {
     }
     
     private func setPageControl() {
-        pageControl.currentPageIndicatorTintColor = .systemGray
-        pageControl.pageIndicatorTintColor = .systemBlue
+        pageControl.currentPageIndicatorTintColor = AppColors.grayLighter
+        pageControl.pageIndicatorTintColor = AppColors.blue
+        pageControl.transform = CGAffineTransform(scaleX: 1.5, y: 0.8)
         pageControl.numberOfPages = onboardingPages.count
         pageControl.currentPage = initialPage
-        
         pageControl.addTarget(self, action: #selector(pageControlAction), for: .touchUpInside)
         
         if #available(iOS 14.0, *) {
