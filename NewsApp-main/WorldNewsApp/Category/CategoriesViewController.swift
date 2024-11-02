@@ -29,7 +29,7 @@ class CategoriesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        categories = storageManager.getCategories(forKey: .categories)
+        categories = storageManager.getCategories()
         
         if !onBoardingIsDone {
             setCategoryBoarding()
@@ -52,19 +52,19 @@ extension CategoriesViewController: UICollectionViewDataSource {
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCell {
             
             
-            let categories = storageManager.getCategories(forKey: .categories)
+            let categories = storageManager.getCategories()
             guard let category = cell.category else { return }
             
             if !categories.contains(where: { $0.name == category.name }) {
                 cell.backgroundColor = AppColors.purplePrimary
                 cell.titleLabel.textColor = .white
-                storageManager.addGategory(category, forKey: .categories)
+                storageManager.addGategory(category)
             } else {
                 //cell.backgroundColor = AppColors.lightBlue
                 cell.backgroundColor = cellColor
                 cell.titleLabel.textColor = AppColors.grayPrimary
                 
-                storageManager.removeCategory(category, forKey: .categories)
+                storageManager.removeCategory(category)
             }
         }
     }
@@ -77,7 +77,7 @@ extension CategoriesViewController: UICollectionViewDelegate {
         cell.configure(with: categoryArray[indexPath.row]())
         
         
-        let categories = storageManager.getCategories(forKey: .categories)
+        let categories = storageManager.getCategories()
         let category = cell.category
         
         if categories.contains(where: { $0.name == category!.name }) {
