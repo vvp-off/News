@@ -22,21 +22,8 @@ final class OnboardingPage2VC: UIViewController {
         return imageView
     }()
     
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 24, weight: .bold)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let subtitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .medium)
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let titleLabel = UILabel(font: .systemFont(ofSize: 24, weight: .bold))
+    private let subtitleLabel = UILabel(font: .systemFont(ofSize: 14, weight: .medium))
     
     private let nextButton: UIButton = {
         let button = UIButton(type: .system)
@@ -73,8 +60,8 @@ final class OnboardingPage2VC: UIViewController {
             nextButton
         ].forEach { view.addSubview($0) }
         
-        titleLabel.text = articles[1].title
-        subtitleLabel.text = articles[1].description
+        titleLabel.text = K.titleNews.page2.rawValue
+        subtitleLabel.text = K.page2Description
         nextButton.setTitle("Next", for: .normal)
         nextButton.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
     }

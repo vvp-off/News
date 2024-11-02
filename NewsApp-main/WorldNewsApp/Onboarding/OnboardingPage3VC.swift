@@ -22,21 +22,8 @@ final class OnboardingPage3VC: UIViewController {
         return imageView
     }()
     
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 24, weight: .bold)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let subtitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .medium)
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let titleLabel = UILabel(font: .systemFont(ofSize: 24, weight: .bold))
+    private let subtitleLabel = UILabel(font: .systemFont(ofSize: 14, weight: .medium))
     
     private let startedButton: UIButton = {
         let button = UIButton(type: .system)
@@ -81,8 +68,8 @@ final class OnboardingPage3VC: UIViewController {
             startedButton
         ].forEach { view.addSubview($0) }
         
-        titleLabel.text = articles[2].title
-        subtitleLabel.text = articles[2].description
+        titleLabel.text = K.titleNews.page3.rawValue
+        subtitleLabel.text = K.page3Description
         startedButton.setTitle("Get Started", for: .normal)
         startedButton.addTarget(self, action: #selector(startedButtonAction), for: .touchUpInside)
     }

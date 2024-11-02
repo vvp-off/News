@@ -69,11 +69,11 @@ final class OnboardingViewController: UIPageViewController {
                 let articles = try await httpClient.requestData(for: apiService)
                 self.articles = articles.map {News(from: $0) }
                 
-                if self.articles.count > 0 {
-                    self.page1.articles = self.articles
-                    self.page2.articles = self.articles
-                    self.page3.articles = self.articles
-                }
+//                if self.articles.count > 0 {
+//                    self.page1.articles = self.articles
+//                    self.page2.articles = self.articles
+//                    self.page3.articles = self.articles
+//                }
                 // Здесь обновляем UI с нашими данными.
                 DispatchQueue.main.async {
                     self.setOnboardingVC()
