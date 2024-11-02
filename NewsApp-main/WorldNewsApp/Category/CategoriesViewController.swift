@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoriesViewController: UIViewController {
+class CategoriesViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     //MARK: - Properties
     let categoriesView = CategoriesView()
@@ -17,11 +17,12 @@ class CategoriesViewController: UIViewController {
     let categoryArray = [{Category(name: .business)}, {Category(name: .entertainment)}, {Category(name: .general)}, {Category(name: .health)}, {Category(name: .technology)}, {Category(name: .science)}, {Category(name: .sports)}]
     
     var cellColor = UIColor(named: "white")
-    let onBoardingIsDone = true
+    var onBoardingIsDone: Bool = false
 
     //MARK: - Life cycle
     override func loadView() {
         view = categoriesView
+        onBoardingIsDone = storageManager.isOnboardingDone()
         categoriesView.collectionView.dataSource = self
         categoriesView.collectionView.delegate = self
         categoriesView.collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: "cell")
@@ -29,7 +30,7 @@ class CategoriesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        categories = storageManager.getCategories(forKey: .categories)
+        categories = storageManager.getCategories()
         
         if !onBoardingIsDone {
             setCategoryBoarding()
@@ -52,19 +53,19 @@ extension CategoriesViewController: UICollectionViewDataSource {
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCell {
             
             
-            let categories = storageManager.getCategories(forKey: .categories)
+            let categories = storageManager.getCategories()
             guard let category = cell.category else { return }
             
             if !categories.contains(where: { $0.name == category.name }) {
                 cell.backgroundColor = AppColors.purplePrimary
                 cell.titleLabel.textColor = .white
-                storageManager.addGategory(category, forKey: .categories)
+                storageManager.addGategory(category)
             } else {
                 //cell.backgroundColor = AppColors.lightBlue
                 cell.backgroundColor = cellColor
                 cell.titleLabel.textColor = AppColors.grayPrimary
                 
-                storageManager.removeCategory(category, forKey: .categories)
+                storageManager.removeCategory(category)
             }
         }
     }
@@ -77,7 +78,7 @@ extension CategoriesViewController: UICollectionViewDelegate {
         cell.configure(with: categoryArray[indexPath.row]())
         
         
-        let categories = storageManager.getCategories(forKey: .categories)
+        let categories = storageManager.getCategories()
         let category = cell.category
         
         if categories.contains(where: { $0.name == category!.name }) {
@@ -112,7 +113,10 @@ extension CategoriesViewController {
     }
     
     @objc func buttonTapped(){
-        tabBarController?.selectedIndex = 0
+        let nextVC = TabBarController()
+        nextVC.modalPresentationStyle = .custom
+        nextVC.transitioningDelegate = self
+        present(nextVC, animated: true)
     }
 }
 

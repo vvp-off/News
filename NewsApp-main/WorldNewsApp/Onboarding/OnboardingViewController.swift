@@ -37,7 +37,18 @@ final class OnboardingViewController: UIPageViewController {
     // MARK: - Methods
     
     private func chooseStartScreen() {
-        if UserDefaultsService.shared.isOnboarding {
+        
+        
+        let storageManager = StorageManager()
+        
+        // extra for testing logOut
+        //storageManager.logOut()
+        //storageManager.clearUserData()
+        //print(storageManager.getUsers().count)
+        
+        
+        //if UserDefaultsService.shared.isOnboarding {
+        if storageManager.isLoggedIn() {
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                let sceneDelegate = windowScene.delegate as? SceneDelegate {
                 let nextVC = TabBarController()

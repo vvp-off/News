@@ -34,7 +34,11 @@ final class OnboardingPage3VC: UIViewController {
     }
     
     private func presentingController() {
-        let nextVC = TabBarController()
+//        let nextVC = TabBarController()
+//        nextVC.modalPresentationStyle = .custom
+//        nextVC.transitioningDelegate = self
+//        present(nextVC, animated: true)
+        let nextVC = AuthViewController()
         nextVC.modalPresentationStyle = .custom
         nextVC.transitioningDelegate = self
         present(nextVC, animated: true)
