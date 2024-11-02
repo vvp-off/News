@@ -21,4 +21,5 @@ enum AppColors {
     static let grayLight = UIColor().hex(0xACAFC3)
     static let grayLighter = UIColor().hex(0xF3F4F6)
     static let lightBlue = UIColor().hex(0xeef0fb)
+    static let blue = UIColor().hex(0x475AD7)
 }

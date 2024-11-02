@@ -17,27 +17,11 @@ final class OnboardingPage1VC: UIViewController {
     
     weak var delegate: OnboardingDelegate?
     var articles: [News] = []
-    private let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "tempImage")
-        imageView.contentMode = .scaleToFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
     
-    private let titleLabel = UILabel(font: .systemFont(ofSize: 24, weight: .bold))
-    private let subtitleLabel = UILabel(font: .systemFont(ofSize: 14, weight: .medium))
-    
-    private let nextButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 20
-        button.setTitle("", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        button.setTitleColor(.white, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    private let imageView = ImageFactory.makeOnboardingImage(name: K.page1Image)
+    private let titleLabel = LabelFactory.createTitleLabel(with: K.titleNews.page1.rawValue)
+    private let subtitleLabel = LabelFactory.createSubtitleLabel(with: K.page1Description)
+    private let nextButton = ButtonFactory.makeButtonWithText(text: "Next")
     
     // MARK: - LifeCycle
     
@@ -63,9 +47,6 @@ final class OnboardingPage1VC: UIViewController {
             nextButton
         ].forEach { view.addSubview($0) }
         
-        titleLabel.text = K.titleNews.page1.rawValue
-        subtitleLabel.text = K.page1Description
-        nextButton.setTitle("Next", for: .normal)
         nextButton.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
     }
 }
