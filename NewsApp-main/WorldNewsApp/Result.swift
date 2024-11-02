@@ -7,14 +7,6 @@
 
 import UIKit
 
-//struct Articlee {
-//    let author: String
-//    let title: String
-//    let category: String
-//    let publicationDate: String
-//    var imageUrl: String? // URL изображения
-//}
-
 class ResultViewController: UIViewController {
     private var isFavorite: Bool = false
     
@@ -26,8 +18,12 @@ class ResultViewController: UIViewController {
     
     func setupUII() {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "MocImage")
+        imageView.image = UIImage(named: "tempImage")
         imageView.contentMode = .scaleAspectFill
+
+        let dimmingView = UIView(frame: imageView.bounds)
+        dimmingView.backgroundColor = UIColor.black.hex(0x22242F).withAlphaComponent(0.48)
+
         
         let scrollView = UIScrollView()
         
@@ -59,25 +55,21 @@ class ResultViewController: UIViewController {
         
         let backButton = UIButton(type: .system)
         let backwardImage = UIImage(systemName: "arrow.backward")
-        backButton.tintColor = .black
+        backButton.tintColor = .white
         backButton.setImage(backwardImage, for: .normal)
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
-      
-        
         
         let favoriteButton = UIButton(type: .system)
         let imageFavorite = UIImage(named: "bookmark")
-        favoriteButton.tintColor = .black
+        favoriteButton.tintColor = .white
         favoriteButton.setImage(imageFavorite, for: .normal)
         favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
-        view.addSubview(favoriteButton)
         
         let shareButton = UIButton(type: .system)
         let imageShare =  UIImage(systemName: "arrowshape.turn.up.right")
-        shareButton.tintColor = .black
+        shareButton.tintColor = .white
         shareButton.setImage(imageShare, for: .normal)
         shareButton.addTarget(self, action: #selector(shareButtonTapped), for: .touchUpInside)
-        
         
         let labelCategory = UILabel()
         labelCategory.text = "Politics"
@@ -88,23 +80,19 @@ class ResultViewController: UIViewController {
         labelCategory.layer.masksToBounds = true
         labelCategory.backgroundColor = AppColors.purplePrimary
         
+
         
-        let blurEffect = UIBlurEffect(style: .systemChromeMaterialLight)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        
-    
         let label = UILabel()
         label.numberOfLines = 0
         label.text = "The latest situation in the presidential election"
-        label.textColor = .black
+        label.textColor = .white
         label.font = .Inter.regular.size(of: 20)
         label.textAlignment = .left
-        
         
         let labelAuthor = UILabel()
         labelAuthor.numberOfLines = 0
         labelAuthor.text = "John Doe"
-        labelAuthor.textColor = .black
+        labelAuthor.textColor = .white
         labelAuthor.font = .Inter.regular.size(of: 16)
         labelAuthor.textAlignment = .left
         
@@ -115,6 +103,7 @@ class ResultViewController: UIViewController {
         labelDefaultAuthor.textAlignment = .left
 
         view.addSubview(imageView)
+        imageView.addSubview(dimmingView)
         view.addSubview(scrollView)
         scrollView.addSubview(textLabel)
         view.addSubview(favoriteButton)
@@ -124,7 +113,6 @@ class ResultViewController: UIViewController {
         view.addSubview(label)
         view.addSubview(labelAuthor)
         view.addSubview(labelDefaultAuthor)
-        imageView.addSubview(blurEffectView)
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -133,10 +121,10 @@ class ResultViewController: UIViewController {
         favoriteButton.translatesAutoresizingMaskIntoConstraints = false
         shareButton.translatesAutoresizingMaskIntoConstraints = false
         labelCategory.translatesAutoresizingMaskIntoConstraints = false
-        blurEffectView.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
         labelAuthor.translatesAutoresizingMaskIntoConstraints = false
         labelDefaultAuthor.translatesAutoresizingMaskIntoConstraints = false
+        dimmingView.translatesAutoresizingMaskIntoConstraints = false
 
         
         NSLayoutConstraint.activate([
@@ -144,6 +132,12 @@ class ResultViewController: UIViewController {
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             imageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 324),
+            
+            dimmingView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+            dimmingView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+            dimmingView.topAnchor.constraint(equalTo: imageView.topAnchor),
+            dimmingView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
+
             
             scrollView.topAnchor.constraint(equalTo: imageView.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -189,11 +183,8 @@ class ResultViewController: UIViewController {
             labelAuthor.heightAnchor.constraint(equalToConstant: 24),
             labelAuthor.widthAnchor.constraint(equalToConstant: 74),
             
-            blurEffectView.topAnchor.constraint(equalTo: imageView.topAnchor),
-            blurEffectView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
-            blurEffectView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
-            blurEffectView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor)
         ])
+        
     }
     
     @objc private func backButtonTapped() {
