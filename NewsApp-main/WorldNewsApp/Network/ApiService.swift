@@ -16,8 +16,6 @@ enum ApiService {
     case science
     case sports
     case technology
-    //    пока не работают под них другая модель нужна
-    //    case source
     
     var path: String {
         switch self {
@@ -37,8 +35,6 @@ enum ApiService {
             return "top-headlines?category=sports"
         case .technology:
             return "top-headlines?category=technology"
-            //        case .source:
-            //            return "sources?q="
         }
     }
 }

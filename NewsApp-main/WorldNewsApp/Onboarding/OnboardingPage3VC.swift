@@ -12,41 +12,12 @@ final class OnboardingPage3VC: UIViewController {
     // MARK: - Properties
     
     var articles: [News] = []
+    let transitionManager = TransitionManager()
     
-    private let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "tempImage")
-        imageView.contentMode = .scaleToFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 24, weight: .bold)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let subtitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .medium)
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let nextButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 20
-        button.setTitle("", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        button.setTitleColor(.white, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    private let imageView = ImageFactory.makeOnboardingImage(name: K.page3Image)
+    private let titleLabel = LabelFactory.createTitleLabel(with: K.titleNews.page3.rawValue)
+    private let subtitleLabel = LabelFactory.createSubtitleLabel(with: K.page3Description)
+    private let startedButton = ButtonFactory.makeButtonWithText(text: "Get Started")
     
     // MARK: - LifeCycle
     
@@ -58,10 +29,16 @@ final class OnboardingPage3VC: UIViewController {
     
     // MARK: - Actions
     
-    @objc private func nextButtonAction(_ sender: UIButton) {
-        let startVC = ViewController()
-        startVC.modalPresentationStyle = .popover
-        present(startVC, animated: true)
+    @objc private func startedButtonAction(_ sender: UIButton) {
+        presentingController()
+        UserDefaultsService.shared.isOnboarding = true
+    }
+    
+    private func presentingController() {
+        let nextVC = TabBarController()
+        nextVC.modalPresentationStyle = .custom
+        nextVC.transitioningDelegate = self
+        present(nextVC, animated: true)
     }
     
     // MARK: - Methods
@@ -71,21 +48,24 @@ final class OnboardingPage3VC: UIViewController {
             imageView,
             titleLabel,
             subtitleLabel,
-            nextButton
+            startedButton
         ].forEach { view.addSubview($0) }
         
-        titleLabel.text = articles[2].title
-        subtitleLabel.text = articles[2].description
-        nextButton.setTitle("Get Started", for: .normal)
-        
-        nextButton.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
+        startedButton.addTarget(self, action: #selector(startedButtonAction), for: .touchUpInside)
+    }
+}
+
+// MARK: - Extensions UIViewControllerTransitioningDelegate
+
+extension OnboardingPage3VC: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return transitionManager
     }
 }
 
 // MARK: - Extensions Constraints
 
 extension OnboardingPage3VC {
-    
     func setConstraints() {
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
@@ -101,10 +81,21 @@ extension OnboardingPage3VC {
             subtitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
             subtitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
             
-            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
-            nextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            nextButton.heightAnchor.constraint(equalToConstant: 56)
+            startedButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
+            startedButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            startedButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            startedButton.heightAnchor.constraint(equalToConstant: 56)
         ])
+    }
+}
+
+final class UserDefaultsService {
+    static let shared = UserDefaultsService()
+    
+    private init(){}
+    
+    var isOnboarding: Bool {
+        get { UserDefaults.standard.bool(forKey: "isOnboarding") }
+        set { UserDefaults.standard.set(newValue, forKey: "isOnboarding")}
     }
 }
