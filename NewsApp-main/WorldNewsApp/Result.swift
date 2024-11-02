@@ -72,9 +72,8 @@ class ResultViewController: UIViewController {
         labelCategory.textAlignment = .center
         labelCategory.layer.cornerRadius = 16
         labelCategory.layer.masksToBounds = true
+        labelCategory.drawText(in: <#T##CGRect#>)
         labelCategory.backgroundColor = AppColors.purplePrimary
-        
-
         
         let label = UILabel()
         label.numberOfLines = 0
@@ -165,18 +164,11 @@ class ResultViewController: UIViewController {
             labelAuthor.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 24),
             labelAuthor.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
             labelAuthor.heightAnchor.constraint(equalToConstant: 24),
-            labelAuthor.widthAnchor.constraint(equalToConstant: 74),
             
             labelDefaultAuthor.topAnchor.constraint(equalTo: labelAuthor.bottomAnchor, constant: 4),
             labelDefaultAuthor.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
             labelDefaultAuthor.heightAnchor.constraint(equalToConstant: 24),
             labelDefaultAuthor.widthAnchor.constraint(equalToConstant: 37),
-            
-            labelAuthor.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 24),
-            labelAuthor.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
-            labelAuthor.heightAnchor.constraint(equalToConstant: 24),
-            labelAuthor.widthAnchor.constraint(equalToConstant: 74),
-            
         ])
         
     }
