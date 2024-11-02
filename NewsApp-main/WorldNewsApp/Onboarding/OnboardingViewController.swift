@@ -41,12 +41,8 @@ final class OnboardingViewController: UIPageViewController {
         
         let storageManager = StorageManager()
         
-        // extra for testing logOut
-        //storageManager.logOut()
-        //storageManager.clearUserData()
-        //print(storageManager.getUsers().count)
-        
-        
+
+            
         //if UserDefaultsService.shared.isOnboarding {
         if storageManager.isLoggedIn() {
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
