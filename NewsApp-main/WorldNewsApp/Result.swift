@@ -155,7 +155,7 @@ class ResultViewController: UIViewController {
             labelCategory.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 72),
             labelCategory.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             labelCategory.heightAnchor.constraint(equalToConstant: 32),
-            labelCategory.widthAnchor.constraint(equalToConstant: 75),
+           
             
             label.topAnchor.constraint(equalTo: labelCategory.bottomAnchor, constant: 16),
             label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),

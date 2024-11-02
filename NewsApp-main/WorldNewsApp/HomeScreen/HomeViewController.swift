@@ -193,7 +193,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func didSelectNew(at index: Int) {
-        // Переход на экран result и передача туда новости
+        present(ResultViewController(with: articles![index]), animated: true)
     }
     
 }

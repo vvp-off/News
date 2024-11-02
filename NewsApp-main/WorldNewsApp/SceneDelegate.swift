@@ -18,7 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        window?.rootViewController = ViewController()
 //        window?.makeKeyAndVisible()
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = ResultViewController()
+<<<<<<< HEAD
+        window?.rootViewController = UINavigationController(rootViewController: TabBarController()) 
+=======
+        window?.rootViewController = UINavigationController(rootViewController: HomeViewController()) 
+>>>>>>> dev
         window?.makeKeyAndVisible()
     }
 }
