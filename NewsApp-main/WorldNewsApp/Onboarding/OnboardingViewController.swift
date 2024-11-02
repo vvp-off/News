@@ -164,7 +164,8 @@ extension OnboardingViewController {
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             pageControl.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            pageControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            pageControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
     }
 }
