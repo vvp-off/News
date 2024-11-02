@@ -12,6 +12,7 @@ final class HTTPClient {
     // MARK: - Properties
     // можно добавить ключи в массив будет переберать если один умрет
     private var apiKeys = [
+        "315ea4a76fb648d9b40a459c86795c18",
         "952c0e9330a946688f8c004d576640bd",
         "another_api_key"
     ]
