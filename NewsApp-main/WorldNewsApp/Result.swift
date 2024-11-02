@@ -7,26 +7,21 @@
 
 import UIKit
 
-struct ArticleForResult {
-    let author: String
-    let title: String
-    let category: String
-    let publicationDate: String
-    let content: String
-    var imageUrl: String? // URL изображения
-    
-    init(author: String, title: String, category: String, publicationDate: String, content: String, imageUrl: String? = nil) {
-        self.author = author
-        self.title = title
-        self.category = category
-        self.publicationDate = publicationDate
-        self.content = content
-        self.imageUrl = imageUrl
-    }
-}
 
 class ResultViewController: UIViewController {
     private var isFavorite: Bool = false
+    
+    private var article: News?
+    
+    init (with article: News? = nil) {
+        self.article = article
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,35 +33,16 @@ class ResultViewController: UIViewController {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "tempImage")
         imageView.contentMode = .scaleAspectFill
-
+        
         let dimmingView = UIView(frame: imageView.bounds)
         dimmingView.backgroundColor = UIColor.black.hex(0x22242F).withAlphaComponent(0.48)
-
+        
         
         let scrollView = UIScrollView()
         
         
         let textLabel = UILabel()
-        textLabel.text = """
-        
-        Results
-        
-        Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races.
-        
-        For more detailed state results
-        click on the States A-Z links at the bottom of this page. Results source:
-        NEP/Edison via Reuters. 
-        
-        Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races.
-         
-        For more detailed state results
-        click on the States A-Z links at the bottom of this page. Results source:
-        NEP/Edison via Reuters. 
-        
-        Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races.
-
-        
-        """
+        textLabel.text = article?.content
         
         textLabel.numberOfLines = 0
         textLabel.textColor = AppColors.grayDark
@@ -90,7 +66,7 @@ class ResultViewController: UIViewController {
         shareButton.addTarget(self, action: #selector(shareButtonTapped), for: .touchUpInside)
         
         let labelCategory = UILabel()
-        labelCategory.text = "Politics"
+        labelCategory.text = article?.sourceName
         labelCategory.textColor = .white
         labelCategory.font = .Inter.regular.size(of: 12)
         labelCategory.textAlignment = .center
@@ -102,14 +78,14 @@ class ResultViewController: UIViewController {
         
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "The latest situation in the presidential election"
+        label.text = article?.title
         label.textColor = .white
         label.font = .Inter.regular.size(of: 20)
         label.textAlignment = .left
         
         let labelAuthor = UILabel()
         labelAuthor.numberOfLines = 0
-        labelAuthor.text = "John Doe"
+        labelAuthor.text = article?.author
         labelAuthor.textColor = .white
         labelAuthor.font = .Inter.regular.size(of: 16)
         labelAuthor.textAlignment = .left
