@@ -239,7 +239,6 @@
 			children = (
 				F4A918612CCD0E0600F3EF54 /* Resources */,
 				D16CD46E2CC6C85900868FA4 /* AppDelegate.swift */,
-				156CBA862CD61717003FEFAC /* HomeScreen */,
 				D16CD4702CC6C85900868FA4 /* SceneDelegate.swift */,
 				D16CD4722CC6C85900868FA4 /* ViewController.swift */,
 				F4A9186C2CCD232C00F3EF54 /* TabBarController.swift */,
@@ -247,6 +246,7 @@
 				D106B5142CD3144B00D28526 /* StorageManager.swift */,
 				D16CD4772CC6C85C00868FA4 /* Assets.xcassets */,
 				D16CD47C2CC6C85C00868FA4 /* Info.plist */,
+				156CBA862CD61717003FEFAC /* HomeScreen */,
 				D147AF5B2CD4450F00963D4B /* Category */,
 				F4A918722CCD236600F3EF54 /* Controllers */,
 				D106B5182CD31C1500D28526 /* Bookmark */,
@@ -327,7 +327,6 @@
 		F4B034792CCC303A0093E094 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				117C858E2CD63BE1004533D4 /* Adamina-Regular.ttf */,
 				F4B0347A2CCC30610093E094 /* Inter-Bold.otf */,
 				F4B0347B2CCC30610093E094 /* Inter-Medium.otf */,
 				F4B0347C2CCC30610093E094 /* Inter-Regular.otf */,
@@ -403,7 +402,6 @@
 				F4A9187D2CCD241F00F3EF54 /* Localizable.strings in Resources */,
 				F4A9187E2CCD241F00F3EF54 /* Localizable.strings in Resources */,
 				D16CD4782CC6C85C00868FA4 /* Assets.xcassets in Resources */,
-				117C858F2CD63BE2004533D4 /* Adamina-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

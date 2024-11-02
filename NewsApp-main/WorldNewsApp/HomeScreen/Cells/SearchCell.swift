@@ -10,7 +10,7 @@ import UIKit
 class SearchCell: UICollectionViewCell {
     static let identifier = String(describing: SearchCell.self)
     
-    private let searchBar: UISearchBar = {
+    let searchBar: UISearchBar = {
         let search = UISearchBar()
         search.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         search.searchTextField.font = .Inter.regular.size(of: 16)
