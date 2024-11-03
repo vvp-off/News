@@ -207,9 +207,15 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func didSelectNew(at index: Int, from section: Int) {
         switch section {
         case 2:
-            present(ResultViewController(with: articles![index]), animated: true)
+            let vc = ResultViewController(with: articles![index])
+            let navController = UINavigationController(rootViewController: vc)
+            navController.modalPresentationStyle = .fullScreen
+            present(navController, animated: true)
         case 3:
-            present(ResultViewController(with: recArticles![index]), animated: true)
+            let vc = ResultViewController(with: recArticles![index])
+            let navController = UINavigationController(rootViewController: vc)
+            navController.modalPresentationStyle = .custom
+            present(navController, animated: true)
         default : break
         }
         
