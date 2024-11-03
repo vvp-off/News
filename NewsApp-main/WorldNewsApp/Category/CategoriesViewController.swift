@@ -22,6 +22,7 @@ class CategoriesViewController: UIViewController, UIViewControllerTransitioningD
     //MARK: - Life cycle
     override func loadView() {
         view = categoriesView
+        
         onBoardingIsDone = storageManager.isOnboardingDone()
         categoriesView.collectionView.dataSource = self
         categoriesView.collectionView.delegate = self

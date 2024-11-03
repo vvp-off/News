@@ -24,6 +24,7 @@ protocol StorageManagerProtocol {
     func logOut()
     func clearUserData()
     func setOnboarding()
+    func resetOnboarding()
     func isOnboardingDone() -> Bool
 }
 
@@ -106,7 +107,7 @@ extension StorageManager: StorageManagerProtocol {
 
         if !categories.contains(where: { $0.name == category.name }) {
             categories.append(category)
-            store(categories, forKey: .users)
+            store(categories, forKey: .categories)
             print("Category successfully added")
         }
     }
@@ -139,6 +140,10 @@ extension StorageManager: StorageManagerProtocol {
     
     func setOnboarding() {
         store(true, forKey: .isOnboargingDone)
+    }
+    
+    func resetOnboarding() {
+        store(false, forKey: .isOnboargingDone)
     }
     
     func isOnboardingDone() -> Bool {
