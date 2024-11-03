@@ -172,9 +172,12 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             didSelectCategory(at: indexPath.item)
             print(categories)
             print("Selected category #\(indexPath.item)")
-        case .newsFromCategory, .recommendedNews:
-            didSelectNew(at: indexPath.item)
+        case .newsFromCategory:
+            didSelectNew(at: indexPath.item, from: 2)
             print("Selected new #\(indexPath.item)")
+        case .recommendedNews:
+            didSelectNew(at: indexPath.item, from: 3)
+            
         case .search:
             print("Search selected")
             
@@ -200,12 +203,19 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         default: break
         }
     }
-        
-        func didSelectNew(at index: Int) {
+    
+    func didSelectNew(at index: Int, from section: Int) {
+        switch section {
+        case 2:
             present(ResultViewController(with: articles![index]), animated: true)
+        case 3:
+            present(ResultViewController(with: recArticles![index]), animated: true)
+        default : break
         }
         
     }
+}
+
 
 
 extension HomeViewController: UISearchBarDelegate {
