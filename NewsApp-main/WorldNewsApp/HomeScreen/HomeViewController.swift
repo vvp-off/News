@@ -231,7 +231,8 @@ extension HomeViewController: UISearchBarDelegate {
                 
                 //                 Здесь обновляем UI с нашими данными.
                 DispatchQueue.main.async {
-                    //present Bookmark(with: news)
+                    self.articles = news
+                    self.collectionView.reloadSections(IndexSet(integer: 2))
                 }
             }
             catch let error as RequestError {
