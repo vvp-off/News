@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class RecNewCell: UICollectionViewCell {
     static let identifier = String(describing: RecNewCell.self)
@@ -69,24 +70,25 @@ class RecNewCell: UICollectionViewCell {
             newImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             newImageView.heightAnchor.constraint(equalToConstant: 96),
             newImageView.widthAnchor.constraint(equalToConstant: 96),
-                    
+            
             categoryNameLabel.topAnchor.constraint(equalTo: newImageView.topAnchor, constant: 5),
             categoryNameLabel.leadingAnchor.constraint(equalTo: newImageView.trailingAnchor, constant: 16),
             categoryNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-                    
+            
             newNameLabel.topAnchor.constraint(equalTo: categoryNameLabel.bottomAnchor, constant: 8),
             newNameLabel.leadingAnchor.constraint(equalTo: categoryNameLabel.leadingAnchor),
             newNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
-                ])
+        ])
     }
     
     func configureCell(image: URL?, topic: String, news: String, newsData: News) {
         categoryNameLabel.text = topic
         newNameLabel.text = news
-            
-//            if let image = image {
-//                latestNewsImage.kf.setImage(with: image)
-//            } else {
-//                latestNewsImage.image = UIImage(named: "berlin")
-            }
-}
+        
+        if let image = image {
+            newImageView.kf.setImage(with: image)
+        } else {
+            newImageView.image = UIImage(named: "berlin")
+        }
+    }}
+

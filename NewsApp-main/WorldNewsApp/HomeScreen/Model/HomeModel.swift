@@ -61,3 +61,7 @@ struct HomeViewModel {
     }
     
 }
+
+enum Categories {
+    case en
+}

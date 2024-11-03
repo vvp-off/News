@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class HomeViewController: UIViewController {
     
@@ -98,7 +99,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         case .search:
             return 1
         case .categories:
-            categories.count
+            return categories.count
         case .newsFromCategory:
             return 10
         case .recommendedNews:
@@ -120,7 +121,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             return header
         }
         return header
-   }
+    }
     
     func configureNagivationBar() {
         navigationItem.title = "Browse"
@@ -143,16 +144,16 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                 return UICollectionViewCell()
             }
             if let news = articles?[indexPath.row] {
-                            let imageUrl = news.urlToImage != nil ? URL(string: news.urlToImage) : nil
-                            let topic = news.sourceName
-                            let newsTitle = news.title
-
-                            cell.configureCell(image: imageUrl, topic: topic, news: newsTitle, newsData: news)
-                        } else {
-                            cell.newImageView.image = UIImage(named: "city_6")
-                            cell.categoryNameLabel.text = "НОВОСТЬ"
-                            cell.newNameLabel.text = "ТЕМА"
-                        }
+                let imageUrl = news.urlToImage != nil ? URL(string: news.urlToImage) : nil
+                let topic = news.sourceName
+                let newsTitle = news.title
+                
+                cell.configureCell(image: imageUrl, topic: topic, news: newsTitle, newsData: news)
+            } else {
+                cell.newImageView.image = UIImage(named: "city_6")
+                cell.categoryNameLabel.text = "НОВОСТЬ"
+                cell.newNameLabel.text = "ТЕМА"
+            }
             return cell
         case .recommendedNews:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecNewCell.identifier, for: indexPath) as! RecNewCell
@@ -189,13 +190,23 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func didSelectCategory(at index: Int) {
         // Изменение состояния секции categoryNews
         // Смена ячейки категории на выбранную и изменение старой ячейки на не выбранную
+        switch index {
+        case 0: fetchNews(apiService: .entertainment)
+        case 1: fetchNews(apiService: .business)
+        case 2: fetchNews(apiService: .science)
+        case 3: fetchNews(apiService: .technology)
+        case 4: fetchNews(apiService: .sports)
+        case 5: fetchNews(apiService: .health)
+        default: break
+        }
     }
-    
-    func didSelectNew(at index: Int) {
-        present(ResultViewController(with: articles![index]), animated: true)
+        
+        func didSelectNew(at index: Int) {
+            present(ResultViewController(with: articles![index]), animated: true)
+        }
+        
     }
-    
-}
+
 
 extension HomeViewController: UISearchBarDelegate {
     
