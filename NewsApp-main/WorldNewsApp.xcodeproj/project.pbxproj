@@ -248,7 +248,6 @@
 		D16CD46D2CC6C85900868FA4 /* WorldNewsApp */ = {
 			isa = PBXGroup;
 			children = (
-				F4F91DE62CD6D78C000618EE /* Bookmark */,
 				F4A918612CCD0E0600F3EF54 /* Resources */,
 				D16CD46E2CC6C85900868FA4 /* AppDelegate.swift */,
 				D16CD4702CC6C85900868FA4 /* SceneDelegate.swift */,
@@ -258,6 +257,7 @@
 				D106B5142CD3144B00D28526 /* StorageManager.swift */,
 				D16CD4772CC6C85C00868FA4 /* Assets.xcassets */,
 				D16CD47C2CC6C85C00868FA4 /* Info.plist */,
+				F4F91DE62CD6D78C000618EE /* Bookmark */,
 				156CBA862CD61717003FEFAC /* HomeScreen */,
 				D147AF5B2CD4450F00963D4B /* Category */,
 				F4A918722CCD236600F3EF54 /* Controllers */,
