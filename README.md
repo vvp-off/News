@@ -1,7 +1,7 @@
 # NewsToDay
 
 <p align="center">
-  <img src="https://github.com/vvp-off/News/tree/dev/NewsApp-main/WorldNewsApp/Resources/Images/showree.gif">
+  <img src="https://github.com/vvp-off/News/blob/dev/NewsApp-main/WorldNewsApp/Resources/Images/showree.gif">
 </p>
 
 Привет, друзья!
@@ -42,10 +42,10 @@
 </p>
 
 <p align="center">
-<img src="https://github.com/vvp-off/News/tree/dev/NewsApp-main/WorldNewsApp/Resources/Images/image1.jpeg" width="140" /> 
-<img src="https://github.com/vvp-off/News/tree/dev/NewsApp-main/WorldNewsApp/Resources/Images/image2.jpeg" width="140" />  
-<img src="https://github.com/vvp-off/News/tree/dev/NewsApp-main/WorldNewsApp/Resources/Images/image3.jpeg" width="140" /> 
-<img src="https://github.com/vvp-off/News/tree/dev/NewsApp-main/WorldNewsApp/Resources/Images/image4.jpeg" width="140" /> 
-<img src="https://github.com/vvp-off/News/tree/dev/NewsApp-main/WorldNewsApp/Resources/Images/image5.jpeg" width="140" /> 
+<img src="https://github.com/vvp-off/News/blob/dev/NewsApp-main/WorldNewsApp/Resources/Images/image1.jpeg" width="140" /> 
+<img src="https://github.com/vvp-off/News/blob/dev/NewsApp-main/WorldNewsApp/Resources/Images/image2.jpeg" width="140" />  
+<img src="https://github.com/vvp-off/News/blob/dev/NewsApp-main/WorldNewsApp/Resources/Images/image3.jpeg" width="140" /> 
+<img src="https://github.com/vvp-off/News/blob/dev/NewsApp-main/WorldNewsApp/Resources/Images/image4.jpeg" width="140" /> 
+<img src="https://github.com/vvp-off/News/blob/dev/NewsApp-main/WorldNewsApp/Resources/Images/image5.jpeg" width="140" /> 
 </p>
 
