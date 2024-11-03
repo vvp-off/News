@@ -24,7 +24,7 @@ class UserInfoCell: UITableViewCell {
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .systemGray5
-//        imageView.image = UIImage(named: "DiceSix")
+        imageView.image = UIImage(named: "avatar")
         return imageView
     }()
     

@@ -8,7 +8,7 @@ import Kingfisher
 import UIKit
 
 class PaddingLabel: UILabel {
-    var textInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16) // Установите отступы
+    var textInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
 
     override func drawText(in rect: CGRect) {
         let paddedRect = rect.inset(by: textInsets)
@@ -44,11 +44,24 @@ class ResultViewController: UIViewController {
         setupUII()
     }
     
+    
+
+
+    
+  
     func setupUII() {
+       
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "tempImage")
-        imageView.contentMode = .scaleAspectFill
+        imageView.isUserInteractionEnabled = true
+        guard var stringImage = article?.urlToImage else {return}
+        var urlImage = URL(string: stringImage)
+        if let image = urlImage {
+            imageView.kf.setImage(with: image)
+        } else {
+            imageView.image = UIImage(named: "tempImage")
+        }
         
+            
         let dimmingView = UIView(frame: imageView.bounds)
         dimmingView.backgroundColor = UIColor.black.hex(0x22242F).withAlphaComponent(0.48)
         
@@ -189,7 +202,7 @@ class ResultViewController: UIViewController {
     }
     
     @objc private func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true)
     }
     
     @objc private func favoriteButtonTapped() {
