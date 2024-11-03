@@ -62,6 +62,7 @@ private extension AuthViewController {
                 password: authView.passwordTextField.text ?? ""
             )
             storageManager.clearUserData()
+            storageManager.resetOnboarding()
             storageManager.addUser(user)
             storageManager.logIn()
             storageManager.setCurrentUser(user)
@@ -157,6 +158,7 @@ private extension AuthViewController {
             
             storageManager.logIn()
             storageManager.setCurrentUser(currentUser)
+            storageManager.setOnboarding()
             
             let nextVC = TabBarController()
             nextVC.modalPresentationStyle = .custom
@@ -164,7 +166,7 @@ private extension AuthViewController {
             present(nextVC, animated: true)
         
         } else {
-            print("No user found with matching email and password.")
+            authView.showWarningMessage("No user found with matching email and password.")
             return
         }
         
