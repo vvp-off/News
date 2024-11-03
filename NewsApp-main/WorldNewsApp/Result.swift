@@ -4,9 +4,24 @@
 //
 //  Created by vp.off on 27.10.2024.
 //
-
+import Kingfisher
 import UIKit
 
+class PaddingLabel: UILabel {
+    var textInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16) // Установите отступы
+
+    override func drawText(in rect: CGRect) {
+        let paddedRect = rect.inset(by: textInsets)
+        super.drawText(in: paddedRect)
+    }
+
+    override var intrinsicContentSize: CGSize {
+        let intrinsicContentSize = super.intrinsicContentSize
+        let width = intrinsicContentSize.width + textInsets.left + textInsets.right
+        let height = intrinsicContentSize.height + textInsets.top + textInsets.bottom
+        return CGSize(width: width, height: height)
+    }
+}
 
 class ResultViewController: UIViewController {
     private var isFavorite: Bool = false
@@ -65,7 +80,7 @@ class ResultViewController: UIViewController {
         shareButton.setImage(imageShare, for: .normal)
         shareButton.addTarget(self, action: #selector(shareButtonTapped), for: .touchUpInside)
         
-        let labelCategory = UILabel()
+        let labelCategory = PaddingLabel()
         labelCategory.text = article?.sourceName
         labelCategory.textColor = .white
         labelCategory.font = .Inter.regular.size(of: 12)
