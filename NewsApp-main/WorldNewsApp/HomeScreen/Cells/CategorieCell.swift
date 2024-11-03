@@ -52,4 +52,8 @@ class CategorieCell: UICollectionViewCell {
         titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
     }
+    
+    func configureCell(with category: String) {
+        titleLabel.text = category
+    }
 }

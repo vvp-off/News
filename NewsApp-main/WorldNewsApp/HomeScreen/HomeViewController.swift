@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class HomeViewController: UIViewController {
     
@@ -13,6 +14,9 @@ final class HomeViewController: UIViewController {
     private var recArticles: [News]?
     private let collectionView: UICollectionView = .createCollectionView(with: .newsLayout())
     private var sections: [NewsSection] = [.search, .categories, .newsFromCategory, .recommendedNews]
+    private let categories: [String] = ["Entertainment", "Business", "Science", "Technology", "Sports", "Health"]
+    private var selectedCategory: String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +24,7 @@ final class HomeViewController: UIViewController {
         view.backgroundColor = .systemBackground
         configureNagivationBar()
         configureCollectionView()
-        
+        selectedCategory = categories.first
         fetchNews(apiService: .entertainment)
         fetchRecNews(apiService: .business)
         
@@ -76,15 +80,9 @@ final class HomeViewController: UIViewController {
                 let articles = try await httpClient.requestData(for: apiService)
                 self.recArticles = articles.map {News(from: $0) }
                 
-                //                 Здесь обновляем UI с нашими данными.
                 DispatchQueue.main.async {
                     self.collectionView.reloadSections(IndexSet(integer: 3))
                 }
-                
-                //                                просто тест вывода информации можно удалить
-//                for sourse in recArticles {
-//                    print(sourse.urlToImage ?? "")
-//                }
             }
             catch let error as RequestError {
                 print("Произошла ошибка: \(error.errorDescription ?? "Неизвестная ошибка")")
@@ -101,7 +99,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         case .search:
             return 1
         case .categories:
-            return 10
+            return categories.count
         case .newsFromCategory:
             return 10
         case .recommendedNews:
@@ -123,7 +121,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             return header
         }
         return header
-   }
+    }
     
     func configureNagivationBar() {
         navigationItem.title = "Browse"
@@ -138,23 +136,24 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.searchBar.delegate = self
             return cell
         case .categories:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategorieCell.identifier, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategorieCell.identifier, for: indexPath) as! CategorieCell
+            cell.configureCell(with: categories[indexPath.row])
             return cell
         case .newsFromCategory:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewFromCategoryCell.identifier, for: indexPath) as? NewFromCategoryCell else {
                 return UICollectionViewCell()
             }
             if let news = articles?[indexPath.row] {
-                            let imageUrl = news.urlToImage != nil ? URL(string: news.urlToImage) : nil
-                            let topic = news.sourceName
-                            let newsTitle = news.title
-
-                            cell.configureCell(image: imageUrl, topic: topic, news: newsTitle, newsData: news)
-                        } else {
-                            cell.newImageView.image = UIImage(named: "city_6")
-                            cell.categoryNameLabel.text = "НОВОСТЬ"
-                            cell.newNameLabel.text = "ТЕМА"
-                        }
+                let imageUrl = news.urlToImage != nil ? URL(string: news.urlToImage) : nil
+                let topic = news.sourceName
+                let newsTitle = news.title
+                
+                cell.configureCell(image: imageUrl, topic: topic, news: newsTitle, newsData: news)
+            } else {
+                cell.newImageView.image = UIImage(named: "city_6")
+                cell.categoryNameLabel.text = "НОВОСТЬ"
+                cell.newNameLabel.text = "ТЕМА"
+            }
             return cell
         case .recommendedNews:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecNewCell.identifier, for: indexPath) as! RecNewCell
@@ -171,10 +170,14 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         switch section {
         case .categories:
             didSelectCategory(at: indexPath.item)
+            print(categories)
             print("Selected category #\(indexPath.item)")
-        case .newsFromCategory, .recommendedNews:
-            didSelectNew(at: indexPath.item)
+        case .newsFromCategory:
+            didSelectNew(at: indexPath.item, from: 2)
             print("Selected new #\(indexPath.item)")
+        case .recommendedNews:
+            didSelectNew(at: indexPath.item, from: 3)
+            
         case .search:
             print("Search selected")
             
@@ -190,13 +193,30 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func didSelectCategory(at index: Int) {
         // Изменение состояния секции categoryNews
         // Смена ячейки категории на выбранную и изменение старой ячейки на не выбранную
+        switch index {
+        case 0: fetchNews(apiService: .entertainment)
+        case 1: fetchNews(apiService: .business)
+        case 2: fetchNews(apiService: .science)
+        case 3: fetchNews(apiService: .technology)
+        case 4: fetchNews(apiService: .sports)
+        case 5: fetchNews(apiService: .health)
+        default: break
+        }
     }
     
-    func didSelectNew(at index: Int) {
-        present(ResultViewController(with: articles![index]), animated: true)
+    func didSelectNew(at index: Int, from section: Int) {
+        switch section {
+        case 2:
+            present(ResultViewController(with: articles![index]), animated: true)
+        case 3:
+            present(ResultViewController(with: recArticles![index]), animated: true)
+        default : break
+        }
+        
     }
-    
 }
+
+
 
 extension HomeViewController: UISearchBarDelegate {
     
