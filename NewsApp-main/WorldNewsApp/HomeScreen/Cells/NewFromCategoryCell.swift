@@ -58,7 +58,7 @@ class NewFromCategoryCell: UICollectionViewCell {
     @objc private func addToBookmarks() {
         if bookMarkChangeColor == false {
             bookmarkButton.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .normal)
-            bookmarkButton.tintColor = .systemRed
+            bookmarkButton.tintColor = AppColors.purplePrimary
             bookMarkChangeColor = true
             //            guard let data = newsData else { return }
             //            //print(data)

@@ -44,24 +44,21 @@ class ResultViewController: UIViewController {
         setupUII()
     }
     
+    var favoriteButton = UIButton(type: .system)
+    let imageFavorite = UIImage(named: "bookmark")
     
-
-
-    
-  
     func setupUII() {
-       
+        
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true
-        guard var stringImage = article?.urlToImage else {return}
-        var urlImage = URL(string: stringImage)
+        guard let stringImage = article?.urlToImage else {return}
+        let urlImage = URL(string: stringImage)
         if let image = urlImage {
             imageView.kf.setImage(with: image)
         } else {
             imageView.image = UIImage(named: "tempImage")
         }
         
-            
         let dimmingView = UIView(frame: imageView.bounds)
         dimmingView.backgroundColor = UIColor.black.hex(0x22242F).withAlphaComponent(0.48)
         
@@ -81,8 +78,6 @@ class ResultViewController: UIViewController {
         backButton.setImage(backwardImage, for: .normal)
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         
-        let favoriteButton = UIButton(type: .system)
-        let imageFavorite = UIImage(named: "bookmark")
         favoriteButton.tintColor = .white
         favoriteButton.setImage(imageFavorite, for: .normal)
         favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
@@ -121,7 +116,7 @@ class ResultViewController: UIViewController {
         labelDefaultAuthor.textColor = AppColors.grayLight
         labelDefaultAuthor.font = .Inter.regular.size(of: 14)
         labelDefaultAuthor.textAlignment = .left
-
+        
         view.addSubview(imageView)
         imageView.addSubview(dimmingView)
         view.addSubview(scrollView)
@@ -145,7 +140,6 @@ class ResultViewController: UIViewController {
         labelAuthor.translatesAutoresizingMaskIntoConstraints = false
         labelDefaultAuthor.translatesAutoresizingMaskIntoConstraints = false
         dimmingView.translatesAutoresizingMaskIntoConstraints = false
-
         
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -157,7 +151,6 @@ class ResultViewController: UIViewController {
             dimmingView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
             dimmingView.topAnchor.constraint(equalTo: imageView.topAnchor),
             dimmingView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
-
             
             scrollView.topAnchor.constraint(equalTo: imageView.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -181,7 +174,6 @@ class ResultViewController: UIViewController {
             labelCategory.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 72),
             labelCategory.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             labelCategory.heightAnchor.constraint(equalToConstant: 32),
-           
             
             label.topAnchor.constraint(equalTo: labelCategory.bottomAnchor, constant: 16),
             label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -202,16 +194,22 @@ class ResultViewController: UIViewController {
     
     @objc private func backButtonTapped() {
         dismiss(animated: true)
-        print ("Tap tap")
     }
     
     @objc private func favoriteButtonTapped() {
+       if isFavorite == false {
+           favoriteButton.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+           favoriteButton.tintColor = AppColors.purplePrimary
+           isFavorite = true
+        } else {
+            favoriteButton.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
+            favoriteButton.tintColor = .white
+            isFavorite = false
+        }
+    }
         
+        @objc private func shareButtonTapped() {
+            let activityViewController = UIActivityViewController(activityItems: ["Ваше сообщение для обмена"], applicationActivities: nil)
+            present(activityViewController, animated: true, completion: nil)
+        }
     }
-    
-    @objc private func shareButtonTapped() {
-        let activityViewController = UIActivityViewController(activityItems: ["Ваше сообщение для обмена"], applicationActivities: nil)
-        present(activityViewController, animated: true, completion: nil)
-    }
-}
-
