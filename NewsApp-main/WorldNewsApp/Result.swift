@@ -202,7 +202,6 @@ class ResultViewController: UIViewController {
     
     @objc private func backButtonTapped() {
         dismiss(animated: true)
-        print ("Tap tap")
     }
     
     @objc private func favoriteButtonTapped() {
