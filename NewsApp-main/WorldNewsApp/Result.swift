@@ -4,7 +4,7 @@
 //
 //  Created by vp.off on 27.10.2024.
 //
-
+import Kingfisher
 import UIKit
 
 class PaddingLabel: UILabel {
